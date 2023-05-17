@@ -1,0 +1,75 @@
+
+php artisan serve
+
+php artisan make:Controller PagesController
+
+compact('name');
+
+
+https://laravel.com/docs/10.x/starter-kits
+
+composer require laravel/breeze --dev
+php artisan breeze:install
+
+options ma 
+0 dabau
+yes yes dabau
+
+make changes to web.php page sab bigrinxa;
+
+
+views>layouts>app.blade.php ko 15 no wala vite code copy and paste to master wala page ma script ko thau ma replace hanni
+
+
+npm install
+
+npm run dev
+
+create new database and change db name in env
+
+new terminal ma php artisan migrate 
+
+delete body part in layouts>app
+and delete all in dashboard under views and extent app
+dashboard navbar should be edited in app> body part
+
+php artisan make:controller CategoryController to make CategoryController
+
+recources>views> new folder category then new file index.blade.php 
+
+
+add datatable folder in public folder 
+then goto app.blade.php and add these links on 14,15,16 above vite
+    <link rel="stylesheet" href="{{ asset('datatable/datatables.css') }}">
+    <script src="{{ asset('datatable/jquery-3.6.0.js') }}"></script>
+    <script src="{{ asset('datable/datatables.js') }}"></script>
+
+
+
+    php artisan make:modal Category -m
+
+    database>migration>then edit on migration latest as required fields under schema
+
+    php artisan migrate
+
+
+
+    app>modal>category>
+    class bhitra{
+         protected $fillable = [
+        'name',
+        'priority'
+    ];
+    }
+     create resource>views>category>create.blade.php
+     then include in route>web.php
+     function on the CategoryController public create()
+     link in index.blade.php button and in create.blade.php
+
+     store() functiion on the Categorycontroller 
+     route>web.php ma lekhni post ma rakhni
+
+     create ma include garni route bata ani method-POST
+
+      @csrf(token) create.blade.php ma 6 ma lekhni 
+     function bhitra lekhni k vanda as per required 
