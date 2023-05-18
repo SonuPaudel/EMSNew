@@ -44,8 +44,9 @@ class PagesController extends Controller
         $galleries = Gallery::all();
         return view('usergallery', compact('galleries'));
     }
-    public function eventdetails()
+    public function eventdetails($eventid)
     {
-        return view('eventdetails');
+        $eventdetail = Event::find($eventid);
+        return view('eventdetails', compact('eventdetail'));
     }
 }

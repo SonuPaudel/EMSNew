@@ -21,11 +21,7 @@
         <span class="text-red-500 -mt-4">*{{$message}}</span>
         @enderror
 
-        <select class="w-full p-2 rounded-lg mt-2" name="events_id" id="">
-            @foreach($event as $event)
-            <option value="{{$event->id}}"> {{$event->name}}</option>
-            @endforeach
-        </select>
+
 
         <select class="w-full p-2 rounded-lg mt-2" name="services_id" id="">
             @foreach($services as $services)
@@ -33,11 +29,7 @@
             @endforeach
         </select>
 
-        <select class="w-full p-2 rounded-lg mt-2" name="venues_id" id="">
-            @foreach($venue as $venue)
-            <option value="{{$venue->id}}"> {{$venue->name}}</option>
-            @endforeach
-        </select>
+
 
         <textarea id="mytextarea" type="text" class="w-full p-2 rounded-lg mt-2" name="description" placeholder="Description" value="">{{$event->description}}</textarea>
         @error('description')

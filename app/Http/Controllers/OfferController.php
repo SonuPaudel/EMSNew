@@ -42,8 +42,6 @@ class OfferController extends Controller
             'description' => 'required',
             'capacity' => 'required|numeric',
             'rate' => 'required|numeric',
-            'events_id' => 'required',
-            'venues_id' => 'required',
             'services_id' => 'required',
         ]);
         if ($request->file('photopath')) {
@@ -90,8 +88,7 @@ class OfferController extends Controller
             'description' => 'required',
             'capacity' => 'required|numeric',
             'rate' => 'required|numeric',
-            'events_id' => 'required',
-            'venues_id' => 'required',
+
             'services_id' => 'required',
         ]);
         $data['photopath'] = $offer->photopath;

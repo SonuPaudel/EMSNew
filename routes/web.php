@@ -28,7 +28,7 @@ Route::get('/event', [PagesController::class, 'event']);
 Route::get('/service', [PagesController::class, 'service']);
 Route::get('/venue', [PagesController::class, 'venue']);
 Route::get('/gallery', [PagesController::class, 'gallery']);
-Route::get('/eventdetails', [PagesController::class, 'eventdetails']);
+Route::get('/{id}/eventdetails', [PagesController::class, 'eventdetails'])->name('eventdetails');
 
 
 
