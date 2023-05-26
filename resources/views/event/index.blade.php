@@ -4,7 +4,7 @@
 <div class="my-8 text-left">
     <a href="{{ route('event.create') }}" class="bg-blue-600 text-white rounded-lg p-2 hover:p-2.5 hover:bg-blue-800">Add Event</a>
 </div>
-<div class="mt-10 border-2 border-slate-300 max-w-5xl">
+<div class="mt-10 border-2 border-slate-300 w-full">
     <div class="mb-4 p-3  bg-slate-300 ">
         <span class="text-black text-xl font-bold">Event List</span>
     </div>
@@ -69,6 +69,7 @@
 
 
             ],
+            responsive: true
         });
 
     });

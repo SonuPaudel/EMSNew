@@ -2,7 +2,7 @@
 @section('content')
 <div class="flex">
     <div class="object-cover h-full relative">
-        <img class="w-screen" src="{{asset('images/services/service-background.png')}}" alt="">
+        <img class="w-screen" src="{{asset('images/services/services-background.jpg')}}" alt="">
 
         <h2 class="text-black- font-bold text-5xl text-center mt-10">Sevices</h2>
         <div class="grid grid-cols-3 gap-20 p-10 ml-48 w-9/12 mt-5">
@@ -20,13 +20,14 @@
 
                 </div>
                 <div class="px-6 pt-4 pb-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300 text-center">
+                    <a href="{{route('servicedetails',$service->id)}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300 text-center">
                         View Details
-                    </button>
+                    </a>
                 </div>
             </div>
             @endforeach
 
         </div>
     </div>
-    @endsection
+</div>
+@endsection

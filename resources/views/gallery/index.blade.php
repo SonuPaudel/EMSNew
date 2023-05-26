@@ -2,7 +2,7 @@
 @section('content')
 @include('layouts.message')
 <h2 class="text-5xl font-bold mt-5  pt-10 text-black">Gallery </h2>
-<div class=" mt-10 border-2 border-slate-300 max-w-5xl ">
+<div class=" mt-10 border-2 border-slate-300 w-full">
     <div class="mb-4 p-3  bg-slate-300 ">
         <span class="text-black text-xl font-bold">Gallery List</span>
     </div>
@@ -10,7 +10,7 @@
         <a href="{{ route('gallery.create') }}" class="bg-blue-600 text-white rounded-lg p-2 mr-4 hover:p-2.5 hover:bg-blue-800">Add Gallery</a>
     </div>
 
-    <table id="example" class="display  max-w-5xl">
+    <table id="example" class="display">
         <thead>
             <th>ID</th>
             <th>Name</th>
@@ -56,7 +56,9 @@
 
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable({
+            responsive: true
+        });
     });
 </script>
 

@@ -10,13 +10,10 @@
             @foreach ($galleries as $gallery)
             <div class="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <img class="w-full h-64 object-center" src="{{asset('images/gallery/'.$gallery->photopath) }}" alt="Card Image">
-                <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">Name:
-                        <span class="font-bold text-xl ">{{$gallery->name}}</span>
-                    </div>
+                <!-- <div class="px-6 py-4">
 
 
-                </div>
+                </div> -->
 
             </div>
             @endforeach

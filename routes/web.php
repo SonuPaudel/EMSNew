@@ -24,11 +24,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, 'index']);
 Route::get('/about', [PagesController::class, 'about']);
+Route::post('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/event', [PagesController::class, 'event']);
 Route::get('/service', [PagesController::class, 'service']);
 Route::get('/venue', [PagesController::class, 'venue']);
 Route::get('/gallery', [PagesController::class, 'gallery']);
 Route::get('/{id}/eventdetails', [PagesController::class, 'eventdetails'])->name('eventdetails');
+Route::get('/{id}/offerdetails', [PagesController::class, 'offerdetails'])->name('offerdetails');
+Route::get('/{id}/servicedetails', [PagesController::class, 'servicedetails'])->name('servicedetails');
 
 
 

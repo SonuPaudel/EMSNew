@@ -69,17 +69,17 @@
                     <span class="text">Booking</span>
                 </a>
             </li>
-            <li>
+            <li @if(request()->routeIs('venue.*')) class="active" @endif>
                 <a href="{{route('venue.index')}}">
                     <i class='bx bx-current-location'></i>
                     <span class="text">Venue</span>
                 </a>
             </li>
 
-            <li>
+            <li @if(request()->routeIs('offer.*')) class="active" @endif>
                 <a href="{{route('offer.index')}}">
-                    <i class='bx bxs-offer'></i>
-                    <span class="text">Offer</span>
+                    <i class='bx bx-package'></i>
+                    <span class="text">Package</span>
                 </a>
             </li>
 
@@ -99,10 +99,12 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="logout">
+                <form action="{{route('logout')}}" method="post" class="ml-3">
+                    @csrf
                     <i class='bx bxs-log-out-circle'></i>
-                    <span class="text">Logout</span>
-                </a>
+                    <button type="submit">Logout</button>
+                    </a>
+                </form>
             </li>
         </ul>
     </section>

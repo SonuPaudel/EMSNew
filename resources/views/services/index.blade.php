@@ -10,7 +10,7 @@
         <a href="{{ route('services.create') }}" class="bg-blue-600 text-white rounded-lg mr-4 p-2 hover:p-2.5 hover:bg-blue-800">Add Services</a>
     </div>
 
-    <table id="example" class="display w-auto">
+    <table id="example" class="display">
         <thead>
             <th>ID</th>
             <th>Services-Name</th>
@@ -61,12 +61,16 @@
     $(document).ready(function() {
         $('#example').DataTable({
             columnDefs: [{
-                    width: 200,
+                    width: 250,
                     targets: 4
-                },
+                }, {
+                    width: 200,
+                    targets: 2
+                }
 
 
             ],
+            responsive: true
         });
     });
 </script>

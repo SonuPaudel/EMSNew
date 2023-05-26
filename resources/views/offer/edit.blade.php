@@ -29,16 +29,13 @@
             @endforeach
         </select>
 
-
-
-        <textarea id="mytextarea" type="text" class="w-full p-2 rounded-lg mt-2" name="description" placeholder="Description" value="">{{$event->description}}</textarea>
+        <textarea id="mytextarea" type="text" class="w-full p-2 rounded-lg mt-2" name="description" placeholder="Description" value="">{{$offer->description}}</textarea>
         @error('description')
         <span class="text-red-500 -mt-4">* {{$message}}</span>
         @enderror
 
-        <div class="h-24 w-36 mb-4 mt-3">
-            <img src="{{asset('images/services/'.$services->photopath)}}">
-        </div>
+        <p>Current Images</p>
+        <img class="w-20" src="{{asset('images/offer/'.$offer->photopath)}}" alt="">
         <input type="file" class="mt-2" name="photopath">
         @error('photopath')
         <span class="text-red-500 -mt-4">*{{$message}}</span>

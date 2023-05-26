@@ -19,9 +19,8 @@
         @error('description')
         <span class="text-red-500 -mt-4">* {{$message}}</span>
         @enderror
-        <div class="h-24 w-36 mb-4 mt-3">
-            <img src="{{asset('images/services/'.$services->photopath)}}">
-        </div>
+        <p>Current Images</p>
+        <img class="w-20" src="{{asset('images/services/'.$services->photopath)}}" alt="">
         <input type="file" class="mt-2" name="photopath">
         @error('photopath')
         <span class="text-red-500 -mt-4">*{{$message}}</span>

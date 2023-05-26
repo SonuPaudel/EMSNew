@@ -2,22 +2,22 @@
 @section('content')
 @include('layouts.message')
 <div class="my-8 text-left">
-    <a href="{{ route('offer.create') }}" class="bg-blue-600 text-white rounded-lg p-2 hover:p-2.5 hover:bg-blue-800">Add Offer</a>
+    <a href="{{ route('offer.create') }}" class="bg-blue-600 text-white rounded-lg p-2 hover:p-2.5 hover:bg-blue-800">Add Package</a>
 </div>
-<div class="mt-10 border-2 border-slate-300 max-w-5xl">
+<div class="mt-10 border-2 border-slate-300 w-full">
     <div class="mb-4 p-3  bg-slate-300 ">
-        <span class="text-black text-xl font-bold">Offer List</span>
+        <span class="text-black text-xl font-bold">Package List</span>
     </div>
 
 
     <table id="example" class="display">
         <thead>
             <th>ID</th>
-            <th>Offer-Name</th>
+            <th>Package-Name</th>
             <th>Rate</th>
             <th>Capacity</th>
-            <th>Images</th>
             <th>Description</th>
+            <th>Images</th>
             <th>Action</th>
         </thead>
 
@@ -61,7 +61,16 @@
 
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable({
+            columnDefs: [{
+                width: 250,
+                targets: 4
+            }, {
+                width: 200,
+                targets: 1
+            }],
+            responsive: true
+        });
     });
 </script>
 

@@ -2,7 +2,7 @@
 @section('content')
 @include('layouts.message')
 <h2 class="text-5xl font-bold mt-5  pt-10 text-black">Venue</h2>
-<div class="  mt-10 border-2 border-slate-300 max-w-5xl">
+<div class="  mt-10 border-2 border-slate-300 w-full">
     <div class="mb-4 p-3  bg-slate-300 ">
         <span class="text-black text-xl font-bold">Venue List</span>
     </div>
@@ -65,6 +65,7 @@
 
 
                 ],
+                responsive: true
             });
         });
     </script>

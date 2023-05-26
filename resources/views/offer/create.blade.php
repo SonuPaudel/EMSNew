@@ -5,7 +5,7 @@
     <h2 class="text-xl font-bold  text-black p-2 bg-slate-300">Offer Add Table</h2>
     <form action="{{ route('offer.store') }}" method="POST" enctype="multipart/form-data" class=" ml-5 mr-5 mt-2">
         @csrf
-        <label for="name" class="-mb-2 text-grey-800">Enter Event Name</label>
+        <label for="name" class="-mb-2 text-grey-800">Enter Offer Name</label>
         <input type="text" id="name" class="w-full p-2 rounded-lg mb-2" name="name" placeholder="Enter Name" value="{{old('name')}}">
         @error('name')
         <span class="text-red-500 -mt-4">*{{$message}}</span>
@@ -20,8 +20,6 @@
         @error('capacity')
         <span class="text-red-500 -mt-4">*{{$message}}</span>
         @enderror
-
-
 
         <select class="w-full p-2 rounded-lg mt-2" name="services_id" id="">
             @foreach($services as $services)

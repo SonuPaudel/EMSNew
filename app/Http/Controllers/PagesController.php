@@ -16,13 +16,24 @@ class PagesController extends Controller
         $offers = Offer::all();
         return view('welcome', compact('offers'));
     }
-    public function dashboard2()
-    {
-        return view('layouts.apps');
-    }
+
     public function about()
     {
         return view('aboutus');
+    }
+    public function contact(Request $request)
+
+    {
+        return view('contactus');
+    }
+    public function submitContactForm(Request $request)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required',
+        ]);
     }
     public function event()
     {
@@ -48,5 +59,15 @@ class PagesController extends Controller
     {
         $eventdetail = Event::find($eventid);
         return view('eventdetails', compact('eventdetail'));
+    }
+    public function offerdetails($offerid)
+    {
+        $offerdetail = Offer::find($offerid);
+        return view('offerdetails', compact('offerdetail'));
+    }
+    public function servicedetails($serviceid)
+    {
+        $servicedetail = Services::find($serviceid);
+        return view('servicedetails', compact('servicedetail'));
     }
 }
