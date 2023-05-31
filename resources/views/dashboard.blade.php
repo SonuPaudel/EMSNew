@@ -1,139 +1,23 @@
 @extends('layouts.app')
 @section('content')
-<main>
-    <div class="head-title">
-        <div class="left">
-            <h1>Dashboard</h1>
-            <ul class="breadcrumb">
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li><i class='bx bx-chevron-right'></i></li>
-                <li>
-                    <a class="active" href="#">Home</a>
-                </li>
-            </ul>
-        </div>
-        <a href="#" class="btn-download">
-            <i class='bx bxs-cloud-download'></i>
-            <span class="text">Download PDF</span>
-        </a>
+<h2 class="text-4xl font-bold  text-black ">Dashboard</h2>
+<div class="grid grid-cols-2 gap-8 my-6 h-64 ">
+    <div class="p-4 flex justify-between bg-green-600 text-white rounded-lg w-3/4">
+        <span class="text-4xl font-semibold mt-5">Total Event</span>
+        <span class="text-5xl font-normal mt-5">{{$totalevent}}</span>
     </div>
-
-    <ul class="box-info">
-        <li>
-            <i class='bx bxs-calendar-check'></i>
-            <span class="text">
-                <h3>1020</h3>
-                <p>New Order</p>
-            </span>
-        </li>
-        <li>
-            <i class='bx bxs-group'></i>
-            <span class="text">
-                <h3>2834</h3>
-                <p>Visitors</p>
-            </span>
-        </li>
-        <li>
-            <i class='bx bxs-dollar-circle'></i>
-            <span class="text">
-                <h3>$2543</h3>
-                <p>Total Sales</p>
-            </span>
-        </li>
-    </ul>
-
-
-    <div class="table-data">
-        <div class="order">
-            <div class="head">
-                <h3>Recent Orders</h3>
-                <i class='bx bx-search'></i>
-                <i class='bx bx-filter'></i>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>User</th>
-                        <th>Date Order</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status completed">Completed</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status pending">Pending</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status process">Process</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status pending">Pending</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status completed">Completed</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="todo">
-            <div class="head">
-                <h3>Todos</h3>
-                <i class='bx bx-plus'></i>
-                <i class='bx bx-filter'></i>
-            </div>
-            <ul class="todo-list">
-                <li class="completed">
-                    <p>Todo List</p>
-                    <i class='bx bx-dots-vertical-rounded'></i>
-                </li>
-                <li class="completed">
-                    <p>Todo List</p>
-                    <i class='bx bx-dots-vertical-rounded'></i>
-                </li>
-                <li class="not-completed">
-                    <p>Todo List</p>
-                    <i class='bx bx-dots-vertical-rounded'></i>
-                </li>
-                <li class="completed">
-                    <p>Todo List</p>
-                    <i class='bx bx-dots-vertical-rounded'></i>
-                </li>
-                <li class="not-completed">
-                    <p>Todo List</p>
-                    <i class='bx bx-dots-vertical-rounded'></i>
-                </li>
-            </ul>
-        </div>
+    <div class="p-4 flex justify-between bg-blue-600 text-white rounded-lg w-3/4">
+        <span class="text-4xl font-semibold mt-5">Total Services</span>
+        <span class="text-5xl font-normal mt-5">{{$totalservices}}</span>
     </div>
-</main>
+    <div class="p-4 flex justify-between bg-red-600 text-white rounded-lg w-3/4">
+        <span class="text-4xl font-semibold mt-5">Total Venue</span>
+        <span class="text-5xl font-normal mt-5">{{$totalvenue}}</span>
+    </div>
+    <div class="p-4 flex justify-between bg-red-600 text-white rounded-lg w-3/4 ">
+        <span class="text-4xl font-semibold mt-5">Total Package</span>
+        <span class="text-5xl font-normal mt-5">{{$totalpackage}}</span>
+    </div>
+</div>
 
 @endsection

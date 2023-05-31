@@ -21,20 +21,12 @@ class PagesController extends Controller
     {
         return view('aboutus');
     }
-    public function contact(Request $request)
+    public function contact()
 
     {
         return view('contactus');
     }
-    public function submitContactForm(Request $request)
-    {
-        // Validate the form data
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'message' => 'required',
-        ]);
-    }
+
     public function event()
     {
         $events = Event::all();

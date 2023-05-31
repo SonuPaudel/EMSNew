@@ -31,13 +31,11 @@
 
 <body>
 
-
     <!-- SIDEBAR -->
     <section id="sidebar">
-        <a href="#" class="brand">
-            <i class='bx bxs-smile'></i>
-            <span class="text">AdminHub</span>
-        </a>
+        <!-- <a href="#" class="brand">
+            <span class="text">Event Management System</span>
+        </a> -->
         <ul class="side-menu top">
             <li @if(request()->routeIs('dashboard.*')) class="active" @endif>
                 <a href="{{route('dashboard')}}">

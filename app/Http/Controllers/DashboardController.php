@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Offer;
 use App\Models\Services;
 use App\Models\User;
 use App\Models\Venue;
@@ -12,7 +13,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $totalevent = Event::count();
+        $totalservices = Services::count();
+        $totalvenue = Venue::count();
+        $totaluser = User::count();
+        $totalpackage = Offer::count();
 
-        return view('dashboard');
+        return view('dashboard', compact('totalevent', 'totalservices', 'totalvenue', 'totaluser', 'totalpackage'));
     }
 }
