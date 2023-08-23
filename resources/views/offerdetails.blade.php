@@ -1,4 +1,4 @@
-@extends('master')
+@extends('header')
 @section('content')
 <div class="object-cover h-full relative">
     <img class="w-screen" src="{{asset('images/home/eventdetails-background.jpg')}}" alt="">

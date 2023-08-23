@@ -1,4 +1,4 @@
-@extends('master')
+@extends('header')
 @section('content')
 <div class="flex">
     <div class="object-cover h-full relative">

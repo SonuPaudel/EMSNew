@@ -1,10 +1,6 @@
-<html>
-
-<head>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body>
+    @extends('header')
+    @section('content')
+    
     <div class="selection:bg-blue-500 selection:text-white">
         <div class="min-h-screen bg-blue-100 flex justify-center items-center">
             <div class="p-8 flex-1">
@@ -36,6 +32,5 @@
         </div>
     </div>
     </form>
-</body>
-
-</html>
+    </div>
+    @endsection

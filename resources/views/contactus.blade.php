@@ -1,4 +1,4 @@
-@extends('master')
+@extends('header')
 @section('content')
 <style>
     .form-background {

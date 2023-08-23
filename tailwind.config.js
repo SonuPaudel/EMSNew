@@ -13,7 +13,12 @@ module.exports = {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'deep-purple-accent-400':'#9575cd',
+    
+            },
         },
+       
     },
 
     plugins: [require('@tailwindcss/forms')],

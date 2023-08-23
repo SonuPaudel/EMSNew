@@ -22,13 +22,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PagesController::class, 'index']);
-Route::get('/about', [PagesController::class, 'about']);
-Route::get('/contact', [PagesController::class, 'contact']);
-Route::get('/event', [PagesController::class, 'event']);
-Route::get('/service', [PagesController::class, 'service']);
-Route::get('/venue', [PagesController::class, 'venue']);
-Route::get('/gallery', [PagesController::class, 'gallery']);
+Route::get('/', [PagesController::class, 'index'])->name('index');
+Route::get('/about', [PagesController::class, 'about'])->name('about');
+Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
+Route::get('/events', [PagesController::class, 'events'])->name('events');
+Route::get('/services', [PagesController::class, 'services'])->name('services');
+Route::get('/venue', [PagesController::class, 'venue'])->name('venue');
+Route::get('/gallery', [PagesController::class, 'gallery'])->name('gallery');
 Route::get('/{id}/eventdetails', [PagesController::class, 'eventdetails'])->name('eventdetails');
 Route::get('/{id}/offerdetails', [PagesController::class, 'offerdetails'])->name('offerdetails');
 Route::get('/{id}/servicedetails', [PagesController::class, 'servicedetails'])->name('servicedetails');

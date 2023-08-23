@@ -27,12 +27,12 @@ class PagesController extends Controller
         return view('contactus');
     }
 
-    public function event()
+    public function events()
     {
         $events = Event::all();
         return view('userevent', compact('events'));
     }
-    public function service()
+    public function services()
     {
         $services = Services::all();
         return view('userservices', compact('services'));
