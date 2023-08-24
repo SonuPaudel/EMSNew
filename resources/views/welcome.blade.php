@@ -1,9 +1,9 @@
 @extends('header')
 @section('content')
 <div class="relative mb-12">
-    <img class="w-full sm:h-[300px] md:h-[600px] lg:h-[800px] object-center" src="{{asset('images/home.png')}}" alt="">
+    <img class="w-full sm:h-[300px] md:h-[600px] lg:h-[800px] object-center" src="{{asset('images/home.jpg')}}" alt="">
     <div class="absolute inset-0 flex items-center justify-center">
-        <h2 class="lg:text-5xl sm:text-3xl text-left font-bold text-white">Welcome to Our Amazing Website</h2>
+        <h2 class="lg:text-5xl sm:text-3xl text-left font-bold text-black">Welcome to Our Amazing Website</h2>
     </div>
 </div>
 
