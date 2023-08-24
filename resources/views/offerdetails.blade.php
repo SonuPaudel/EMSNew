@@ -1,7 +1,7 @@
 @extends('header')
 @section('content')
 <div class="object-cover h-full relative">
-    <img class="w-screen" src="{{asset('images/home/eventdetails-background.jpg')}}" alt="">
+    <!-- <img class="w-screen" src="{{asset('images/event.jpg')}}" alt=""> -->
     <h2 class="text-black font-bold text-5xl text-center mt-10">Package Details</h2>
     <div class="grid grid-cols-2 gap-10 p-10 ml-48 w-9/12 mt-5">
         <div class="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
