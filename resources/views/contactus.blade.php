@@ -14,7 +14,7 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-5 sm:w-9/12 mx-auto">
 
     <div class="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-10">
-        <img class="w-full object-cover" src="{{asset('images/contact-bg.png')}}">
+        <img class="w-full object-cover h-96 " src="{{asset('images/contact-bg.png')}}">
     </div>
     <div class="lg:col-span-3 sm:col-span-1">
         <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
