@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2023 at 02:54 AM
+-- Generation Time: Aug 29, 2023 at 08:13 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -222,21 +222,21 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `user_type` enum('admin','user') NOT NULL DEFAULT 'user',
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `role` varchar(255) NOT NULL DEFAULT 'editor'
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role`) VALUES
-(1, 'Sonu Paudel', 'paudelsonu10@gmail.com', NULL, '$2y$10$nzuBJ2fV2OhXyswINrjyuu/HUquhuJWnSUh.jlj4wpTxSKH7X9GUa', NULL, '2023-05-14 20:19:33', '2023-05-14 20:19:33', 'admin'),
-(2, 'gu', 'paudelsonu@gmail.com', NULL, '$2y$10$DxCfPNyEHvInaW11jPDn6e9C.j76qKCPLCvApXhy2qIGX305nCuV.', NULL, '2023-05-19 01:01:30', '2023-05-19 01:01:30', 'admin');
+INSERT INTO `users` (`id`, `name`, `email`, `user_type`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(3, 'Sonu Paudel', 'paudelsonu10@gmail.com', 'admin', NULL, '$2y$10$BXoMMCCBkUv3ytzcsjVMcevUhk2c8ZboN3wdFSmYff8u4x.JtR1Ue', NULL, '2023-08-29 08:36:51', '2023-08-29 08:36:51'),
+(4, 'Ritesh sapkota', 'ritesh@lict.edu.np', 'user', NULL, '$2y$10$uV3wTj2KLcjuvt.OknILs.EdaRFSt4XlGUKoUVWoo8qz0Vd/wYQ02', NULL, '2023-08-29 08:42:29', '2023-08-29 12:26:41');
 
 -- --------------------------------------------------------
 
@@ -382,7 +382,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `venues`

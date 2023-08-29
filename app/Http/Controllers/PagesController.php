@@ -8,6 +8,7 @@ use App\Models\Offer;
 use App\Models\Services;
 use App\Models\Venue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -16,7 +17,27 @@ class PagesController extends Controller
         $offers = Offer::all();
         return view('welcome', compact('offers'));
     }
+    public function userdashboard(){
+       if (Auth::check()){
+        return view('userdashboard');
+    }
+    else{
+        return view('auth.login');
+    }
+    
+        
+    }
 
+    public function userprofile()
+    {   
+        $profiledetails = Auth::user();
+        return view('userprofile');
+    }
+    public function userbookings()
+    {
+        return view('userbookings');
+    }
+    
     public function about()
     {
         return view('aboutus');

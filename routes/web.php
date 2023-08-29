@@ -23,6 +23,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PagesController::class, 'index'])->name('index');
+Route::get('/userdashboard', [PagesController::class, 'userdashboard'])->name('userdashboard');
+
+Route::get('/userprofile', [PagesController::class, 'userprofile'])->name('userprofile');
+Route::post('/userprofile/{id}/update', [UserController::class, 'updateuserProfile'])->name('updateuserProfile');
+
+Route::get('/userbookings', [PagesController::class, 'userbookings'])->name('userbookings');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/events', [PagesController::class, 'events'])->name('events');
@@ -36,10 +42,11 @@ Route::get('/{id}/servicedetails', [PagesController::class, 'servicedetails'])->
 
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 
 
 Route::prefix('admin/')->middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/event', [EventController::class, 'index'])->name('event.index');
     Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
