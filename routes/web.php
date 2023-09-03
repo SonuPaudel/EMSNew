@@ -68,7 +68,7 @@ Route::prefix('admin/')->middleware('auth')->group(function () {
     Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
     Route::post('/services/store', [ServiceController::class, 'store'])->name('services.store');
     Route::get('/services/{services}/edit', [ServiceController::class, 'edit'])->name('services.edit');
-    Route::post('/services/{services}/update', [ServiceController::class, 'update'])->name('services.update');
+    Route::put('/services/{services}', [ServiceController::class, 'update'])->name('services.update');
     Route::post('/services/delete', [ServiceController::class, 'delete'])->name('services.delete');
 
     //User
@@ -88,12 +88,12 @@ Route::prefix('admin/')->middleware('auth')->group(function () {
     Route::post('/venue/delete', [VenueController::class, 'delete'])->name('venue.delete');
 
     //Offer
-    Route::get('/offer', [OfferController::class, 'index'])->name('offer.index');
-    Route::get('/offer/create', [OfferController::class, 'create'])->name('offer.create');
-    Route::post('/offer/store', [OfferController::class, 'store'])->name('offer.store');
-    Route::get('/offer/{offer}/edit', [OfferController::class, 'edit'])->name('offer.edit');
-    Route::post('/offer/{offer}/update', [OfferController::class, 'update'])->name('offer.update');
-    Route::post('/offer/delete', [OfferController::class, 'delete'])->name('offer.delete');
+    Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
+    Route::get('/offers/create', [OfferController::class, 'create'])->name('offers.create');
+    Route::post('/offers/store', [OfferController::class, 'store'])->name('offers.store');
+    Route::get('/offers/{offer}/edit', [OfferController::class, 'edit'])->name('offers.edit');
+    Route::post('/offers/{offer}/update', [OfferController::class, 'update'])->name('offers.update');
+    Route::post('/offers/delete', [OfferController::class, 'delete'])->name('offers.delete');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

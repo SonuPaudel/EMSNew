@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText('description');
             $table->string('photopath');
             $table->string('location');
+            $table->string('capacity');
             $table->timestamps();
         });
     }

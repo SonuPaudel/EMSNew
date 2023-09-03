@@ -14,25 +14,25 @@
         <thead>
             <th>ID</th>
             <th>Services-Name</th>
-            <th>Type</th>
+            <th>Event-Type</th>
+            <th>Rate</th>
             <th>Photo</th>
-            <th>Description</th>
+            
             <th>Action</th>
         </thead>
 
         <tbody>
-            @foreach($services as $services)
+            @foreach($services as $service)
             <tr>
-                <td>{{$services->id}}</td>
-                <td>{{$services->name}}</td>
-                <td>{{$services->type}}</td>
-                <td><img class="w-20" src="{{asset('images/services/'.$services->photopath)}}" alt=""></td>
+                <td>{{$service->id}}</td>
+                <td>{{$service->name}}</td>
+                <td>{{$service->event->name}}</td>
+                <td>{{$service->rate}}</td>
+                <td><img class="w-20" src="{{asset('images/services/'.$service->photopath)}}" alt=""></td>
+                
                 <td>
-                    <div class="h-20 overflow-auto">{!!$services->description!!}</div>
-                </td>
-                <td>
-                    <a href="{{ route('services.edit',$services->id)}}" class="bg-blue-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-blue-800">Edit</a>
-                    <a onclick="showDelete('{{$services->id}}')" class="bg-red-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-red-800">Delete</a>
+                    <a href="{{ route('services.edit',$service->id)}}" class="bg-blue-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-blue-800">Edit</a>
+                    <a onclick="showDelete('{{$service->id}}')" class="bg-red-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-red-800">Delete</a>
                 </td>
             </tr>
             @endforeach
@@ -70,7 +70,7 @@
 
 
             ],
-            responsive: true
+            
         });
     });
 </script>

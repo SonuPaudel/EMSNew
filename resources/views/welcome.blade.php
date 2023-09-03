@@ -10,27 +10,33 @@
 
 
 <div class="mt-5 text-center">
-    <h3 class="text-4xl font-bold text-gray-800 mt-5 mb-12">Explore Our Best Offers</h3>
+    <h3 class="text-4xl font-bold text-gray-800 mt-5 mb-12">Top Picks for You</h3>
 </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-5 sm:w-9/12 mx-auto">
-    @foreach ($offers as $offer)
-    <div class="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-10">
-        <img class="w-full h-56 object-cover" src="{{asset('images/offer/'.$offer->photopath)}}" alt="Card Image">
-        <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">Name:
-                <span class="text-xl">{{$offer->name}}</span>
-            </div>
-            <div class="text-xl mb-2">Rate:
-                <span class="text-xl">{{$offer->rate}}</span>
-            </div>
+
+
+<!-- ✅ Grid Section - Starts Here 👇 -->
+<section class="px-10 w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm-grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-7 mt-10 mb-32">
+
+  <!--   ✅ Product card 1 - Starts Here 👇 -->
+  @foreach ($offers as $offer)
+  <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+    <a href="{{route('servicedetails',$offer->service->id)}}">
+      <img src="{{asset('images/services/'.$offer->service->photopath)}}" alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+      <div class="px-4 py-3 w-72">
+        <span class="text-gray-400 mr-3 uppercase text-xs">{{$offer->service->event->name}}</span>
+        <p class="text-lg font-bold text-black truncate block capitalize">{{$offer->service->name}}</p>
+        <div class="flex items-center">
+          <p class="text-lg font-semibold text-black cursor-auto my-3">{{$offer->discounted_rate}}</p>
+          <del>
+            <p class="text-sm text-gray-600 cursor-auto ml-2">{{$offer->service->rate}}</p>
+          </del>
+          
         </div>
-        <div class="px-6 pt-4 pb-2">
-            <a href="{{route('offerdetails',$offer->id)}}" class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300 text-center">
-                View Details
-            </a>
-        </div>
-    </div>
-    @endforeach
-</div>
+      </div>
+    </a>
+  </div>
+  @endforeach
+</section>
+
 @endsection

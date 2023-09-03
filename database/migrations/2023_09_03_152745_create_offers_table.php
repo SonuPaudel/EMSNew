@@ -13,14 +13,10 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('photopath');
-            $table->longText('description');
-            $table->string('rate');
-            $table->string('capacity');
-            $table->foreignId('events_id');
-            $table->foreignId('venues_id');
-            $table->foreignId('services_id');
+            $table->foreignId('service_id')->constrained('services');
+            $table->string('discounted_rate');
+
+
             $table->timestamps();
         });
     }

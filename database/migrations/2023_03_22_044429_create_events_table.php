@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('photopath');
             $table->longText('description');
-            $table->string('rate');
-            $table->string('capacity');
-            $table->foreignId('services_id');
+           
+            
+            
             $table->timestamps();
         });
     }

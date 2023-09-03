@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Services;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Psy\Readline\Hoa\EventSource;
 
 class ServiceController extends Controller
 {
@@ -23,9 +25,15 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('services.create');
+        $events = Event::all();
+        return view('services.create', compact('events'));
     }
-
+    public function edit(Services $services)
+    {
+        $services->load('event');
+        $events = Event::all();
+        return view('services.edit', compact('services', 'events'));
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -33,9 +41,10 @@ class ServiceController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'type' => 'required',
+            'event_id' => 'required',
             'photopath' => 'required|mimes:png,jpg',
             'description' => 'required',
+            'rate' => 'required',
         ]);
         if ($request->file('photopath')) {
             $file = $request->file('photopath');
@@ -60,34 +69,37 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
-    {
-        $services = Services::find($id);
-        return view('services.edit', compact('services'));
-    }
+   
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Services $services)
     {
-        $services = Services::find($id);
+        
         $data = $request->validate([
             'name' => 'required',
-            'type' => 'required',
-            'photopath' => 'nullable|mimes:png,jpg',
+            'event_id' => 'required',
             'description' => 'required',
+            'photopath' => 'nullable|mimes:png,jpg',
+            'rate' => 'required',
+            
         ]);
-        $data['photopath'] = $services->photopath;
+        
 
-        if ($request->file('photopath')) {
+        if ($request->hasFile('photopath')) {
             $file = $request->file('photopath');
             $filename = $file->getClientOriginalName();
             $photopath = time() . '_' . $filename;
             $file->move(public_path('/images/services/'), $photopath);
-            File::delete(public_path('/images/services/' . $services->photopath));
+            if ($services->photopath != null) {
+                File::delete(public_path('/images/services/' . $services->photopath));
+            }
+            
             $data['photopath'] = $photopath;
+
         }
+        
         $services->update($data);
         return redirect(route('services.index'))->with('success', 'Services Update Sucessfully');
     }

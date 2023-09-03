@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Gallery;
 use App\Models\Offer;
+use App\Models\offers;
 use App\Models\Services;
 use App\Models\Venue;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $offers = Offer::all();
+       
+        $offers = offers::all();
         return view('welcome', compact('offers'));
     }
     public function userdashboard(){
@@ -73,14 +75,12 @@ class PagesController extends Controller
         $eventdetail = Event::find($eventid);
         return view('eventdetails', compact('eventdetail'));
     }
-    public function offerdetails($offerid)
-    {
-        $offerdetail = Offer::find($offerid);
-        return view('offerdetails', compact('offerdetail'));
-    }
+   
     public function servicedetails($serviceid)
     {
-        $servicedetail = Services::find($serviceid);
-        return view('servicedetails', compact('servicedetail'));
+        $service = Services::find($serviceid);
+        $offers = offers::where('service_id', $serviceid)->get();
+        
+        return view('servicedetails', compact('service', 'offers'));
     }
 }

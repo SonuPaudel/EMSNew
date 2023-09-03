@@ -15,8 +15,7 @@
         <thead>
             <th>ID</th>
             <th>Event-Name</th>
-            <th>Rate</th>
-            <th>Capacity</th>
+            
             <th>Description</th>
             <th>Photo</th>
             <th>Action</th>
@@ -27,10 +26,9 @@
             <tr>
                 <td>{{$event->id}}</td>
                 <td>{{$event->name}}</td>
-                <td>{{$event->rate}}</td>
-                <td>{{$event->capacity}}</td>
+                
                 <td>
-                    <div class="h-20 overflow-auto">{!!$event->description!!}</div>
+                    <div class="h-20 overflow-auto">{{$event->description}}</div>
                 </td>
                 <td><img class="w-20" src="{{asset('images/event/'.$event->photopath)}}" alt=""></td>
                 <td>

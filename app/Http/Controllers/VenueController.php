@@ -23,8 +23,8 @@ class VenueController extends Controller
      */
     public function create()
     {
-        $events = Event::all();
-        return view('venue.create', compact('events'));
+        
+        return view('venue.create');
     }
 
     /**
@@ -36,7 +36,8 @@ class VenueController extends Controller
             'name' => 'required',
             'description' => 'required',
             'photopath' => 'required|mimes:png,jpg',
-            'location' => 'required'
+            'location' => 'required',
+            'capacity' => 'required'
 
 
         ]);
@@ -71,18 +72,15 @@ class VenueController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
-    {
-        $venue = Venue::find($id);
+    public function update(Request $request, Venue $venue){
         $data = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'photopath' => 'nullable',
-            'location' => 'required'
-
+            'photopath' => 'nullable|mimes:png,jpg',
+            'location' => 'required',
+            'capacity' => 'required'
         ]);
         $data['photopath'] = $venue->photopath;
-
         if ($request->file('photopath')) {
             $file = $request->file('photopath');
             $filename = $file->getClientOriginalName();
@@ -92,7 +90,7 @@ class VenueController extends Controller
             $data['photopath'] = $photopath;
         }
         $venue->update($data);
-        return redirect(route('venue.index'))->with('success', 'Venue Update Sucessfully');
+        return redirect(route('venue.index'))->with('success', 'Venue Updated Successfully');
     }
 
     /**

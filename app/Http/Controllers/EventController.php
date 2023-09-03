@@ -17,9 +17,8 @@ class EventController extends Controller
     }
     public function create()
     {
-        $services = Services::all();
-        $venue = Venue::all();
-        return view('event.create', compact('services', 'venue'));
+        
+        return view('event.create');
     }
     public function store(Request $request)
     {
@@ -27,9 +26,7 @@ class EventController extends Controller
             'name' => 'required',
             'photopath' => 'required',
             'description' => 'required',
-            'capacity' => 'required|numeric',
-            'rate' => 'required|numeric',
-            'services_id' => 'required',
+            
         ]);
 
         if ($request->file('photopath')) {
@@ -45,10 +42,9 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = Event::find($id);
-        $services = Services::all();
-        $venue = Venue::all();
+       
 
-        return view('event.edit', compact('event', 'services', 'venue'));
+        return view('event.edit', compact('event'));
     }
     public function update(Request $request, $id)
     {
@@ -57,9 +53,7 @@ class EventController extends Controller
             'name' => 'required',
             'photopath' => 'nullable',
             'description' => 'required',
-            'capacity' => 'required|numeric',
-            'rate' => 'required|numeric',
-            'services_id' => 'required',
+            
         ]);
         $data['photopath'] = $event->photopath;
 

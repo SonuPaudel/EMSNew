@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Offer;
+use App\Models\offers;
 use App\Models\Services;
 use App\Models\Venue;
 use Illuminate\Http\Request;
@@ -16,8 +17,9 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $offers = Offer::all();
-        return view('offer.index', compact('offers'));
+        
+        $offers = offers::all();
+        return view('offers.index', compact('offers'));
     }
 
     /**
@@ -26,39 +28,26 @@ class OfferController extends Controller
     public function create()
     {
         $services = Services::all();
-        $venue = Venue::all();
-        $event = Event::all();
-        return view('offer.create', compact('services', 'venue', 'event'));
+        return view('offers.create', compact('services'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'name' => 'required',
-            'photopath' => 'required',
-            'description' => 'required',
-            'capacity' => 'required|numeric',
-            'rate' => 'required|numeric',
-            'services_id' => 'required',
+    public function store(Request $request){
+        $data=$request->validate([
+            'service_id'=>'required',
+            'discounted_rate'=>'required',
         ]);
-        if ($request->file('photopath')) {
-            $file = $request->file('photopath');
-            $filename = $file->getClientOriginalName();
-            $photopath = time() . '_' . $filename;
-            $file->move(public_path('/images/offer/'), $photopath);
-            $data['photopath'] = $photopath;
-        }
-        Offer::create($data);
-        return redirect(route('offer.index'))->with('success', 'Offer Added Successfully');
+        $offer=offers::create($data);
+        return redirect(route('offers.index'))->with('success','Offer Created Successfully');
+        
     }
 
     /**
      * Display the specified resource.
-     */
-    public function show(Offer $offer)
+     */ 
+    public function show(Offers $offer)
     {
         //
     }
@@ -68,51 +57,33 @@ class OfferController extends Controller
      */
     public function edit($id)
     {
-        $offer = Offer::find($id);
+        $offer = Offers::find($id);
         $services = Services::all();
-        $venue = Venue::all();
+       
         $event = Event::all();
 
-        return view('offer.edit', compact('event', 'services', 'venue', 'offer'));
+        return view('offers.edit', compact('event', 'services', 'offer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
-    {
-        $offer = Offer::find($id);
-        $data = $request->validate([
-            'name' => 'required',
-            'photopath' => 'nullable',
-            'description' => 'required',
-            'capacity' => 'required|numeric',
-            'rate' => 'required|numeric',
-
-            'services_id' => 'required',
+    public function update(Request $request, $id){
+        $data=$request->validate([
+            'service_id'=>'required',
+            'discounted_rate'=>'required',
         ]);
-        $data['photopath'] = $offer->photopath;
-
-        if ($request->file('photopath')) {
-            $file = $request->file('photopath');
-            $filename = $file->getClientOriginalName();
-            $photopath = time() . '_' . $filename;
-            $file->move(public_path('/images/offer/'), $photopath);
-            File::delete(public_path('/images/offer/' . $offer->photopath));
-            $data['photopath'] = $photopath;
-        }
-        $offer = Offer::find($id);
+        $offer=offers::find($id);
         $offer->update($data);
-        return redirect(route('offer.index'))->with('success', 'Offer Updated Successfully');
+        return redirect(route('offers.index'))->with('success','Offer Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(Request $request)
-    {
-        $offer = Offer::find($request->dataid);
+    public function delete(Request $request){
+        $offer=offers::find($request->dataid);
         $offer->delete();
-        return redirect(route('offer.index'))->with('success', 'Offer Deleted Successfully');
+        return redirect(route('offers.index'))->with('success','Offer Deleted Successfully');
     }
 }

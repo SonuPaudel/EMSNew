@@ -16,17 +16,15 @@
     <div class="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-10">
         <img class="w-full h-56 object-cover" src="{{asset('images/event/'.$event->photopath)}}" alt="Card Image">
         <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">Name:
+            <div class="font-bold text-xl mb-2 justify-center text-center">
                 <span class="text-xl">{{$event->name}}</span>
             </div>
-            <div class="text-xl mb-2">Rate:
-                <span class="text-xl">{{$event->rate}}</span>
-            </div>
+            
 
         </div>
         <div class="px-6 pt-4 pb-2">
-            <a href="{{route('eventdetails',$event->id)}}" class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300 text-center">
-                View Details
+            <a href="{{route('services')}}" class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300 text-center">
+                View Services
             </a>
         </div>
     </div>

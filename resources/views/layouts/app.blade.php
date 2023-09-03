@@ -33,9 +33,10 @@
 
     <!-- SIDEBAR -->
     <section id="sidebar">
-        <i class='bx bxs-smile'></i>
+        
         <a href="#" class="brand">
-            <span class="text">Event Management System</span>
+        <i class='bx bx-sm bxs-smile'></i>
+            <span class="text">EMS</span>
         </a>
         <ul class="side-menu top">
             <li @if(request()->routeIs('dashboard.*')) class="active" @endif>
@@ -44,16 +45,16 @@
                     <span class="text">Dashboard</span>
                 </a>
             </li>
+            <li @if(request()->routeIs('')) class="active" @endif>
+                <a href="#">
+                    <i class='bx bx-bookmark-heart'></i>
+                    <span class="text">Booking</span>
+                </a>
+            </li>
             <li @if(request()->routeIs('event.*')) class="active" @endif>
                 <a href="{{route('event.index')}}">
                     <i class='bx bx-calendar-event'></i>
                     <span class="text">Events</span>
-                </a>
-            </li>
-            <li @if(request()->routeIs('gallery.*')) class="active" @endif>
-                <a href="{{route('gallery.index')}}">
-                    <i class='bx bx-images'></i>
-                    <span class="text">Gallery</span>
                 </a>
             </li>
             <li @if(request()->routeIs('services.*')) class="active" @endif>
@@ -62,25 +63,25 @@
                     <span class="text">Services</span>
                 </a>
             </li>
-            <li @if(request()->routeIs('')) class="active" @endif>
-                <a href="#">
-                    <i class='bx bx-bookmark-heart'></i>
-                    <span class="text">Booking</span>
-                </a>
-            </li>
             <li @if(request()->routeIs('venue.*')) class="active" @endif>
                 <a href="{{route('venue.index')}}">
                     <i class='bx bx-current-location'></i>
                     <span class="text">Venue</span>
                 </a>
             </li>
-
-            <li @if(request()->routeIs('offer.*')) class="active" @endif>
-                <a href="{{route('offer.index')}}">
+            <li @if(request()->routeIs('offers.*')) class="active" @endif>
+                <a href="{{route('offers.index')}}">
                     <i class='bx bx-package'></i>
-                    <span class="text">Package</span>
+                    <span class="text">Offers</span>
                 </a>
             </li>
+            <li @if(request()->routeIs('gallery.*')) class="active" @endif>
+                <a href="{{route('gallery.index')}}">
+                    <i class='bx bx-images'></i>
+                    <span class="text">Gallery</span>
+                </a>
+            </li>
+            
 
             <li>
                 <a href="{{route('user.index')}}">

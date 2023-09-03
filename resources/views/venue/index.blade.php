@@ -26,7 +26,7 @@
                 <td>{{$venue->id}}</td>
                 <td>{{$venue->name}}</td>
                 <td>
-                    <div class="h-20 overflow-auto">{!!$venue->description!!}</div>
+                    <div class="h-20 overflow-auto">{{$venue->description}}</div>
                 </td>
                 <td><img class="w-20" src="{{asset('images/venue/'.$venue->photopath)}}" alt=""></td>
                 <td>{{$venue->location}}</td>

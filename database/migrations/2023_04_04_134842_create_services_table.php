@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('type');
+            $table->string('rate');
             $table->string('photopath');
             $table->longText('description');
+            $table->foreignId('event_id')->constrained();
             $table->timestamps();
         });
     }
@@ -28,4 +29,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('services');
     }
+
 };

@@ -2,7 +2,7 @@
 @section('content')
 @include('layouts.message')
 <div class="my-8 text-left">
-    <a href="{{ route('offer.create') }}" class="bg-blue-600 text-white rounded-lg p-2 hover:p-2.5 hover:bg-blue-800">Add Package</a>
+    <a href="{{ route('offers.create') }}" class="bg-blue-600 text-white rounded-lg p-2 hover:p-2.5 hover:bg-blue-800">Add Offers</a>
 </div>
 <div class="mt-10 border-2 border-slate-300 w-full">
     <div class="mb-4 p-3  bg-slate-300 ">
@@ -13,11 +13,9 @@
     <table id="example" class="display">
         <thead>
             <th>ID</th>
-            <th>Package-Name</th>
+            <th>Service-Name</th>
             <th>Rate</th>
-            <th>Capacity</th>
-            <th>Description</th>
-            <th>Images</th>
+            <th>Discounted Rate</th>
             <th>Action</th>
         </thead>
 
@@ -25,15 +23,13 @@
             @foreach($offers as $offer)
             <tr>
                 <td>{{$offer->id}}</td>
-                <td>{{$offer->name}}</td>
-                <td>{{$offer->rate}}</td>
-                <td>{{$offer->capacity}}</td>
+                <td>{{$offer->service->name}}</td>
+                <td>{{$offer->service->rate}}</td>
+                <td>{{$offer->discounted_rate}}</td>
+                
+                
                 <td>
-                    <div class="h-20 overflow-auto">{!!$offer->description!!}</div>
-                </td>
-                <td><img class="w-20" src="{{asset('images/offer/'.$offer->photopath)}}" alt=""></td>
-                <td>
-                    <a href="{{ route('offer.edit',$offer->id)}}" class="bg-blue-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-blue-800">Edit</a>
+                    <a href="{{ route('offers.edit',$offer->id)}}" class="bg-blue-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-blue-800">Edit</a>
                     <a onclick="showDelete('{{$offer->id}}')" class="bg-red-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-red-800">Delete</a>
                 </td>
             </tr>
@@ -46,7 +42,7 @@
         <div class="bg-white p-10 ">
             <p class="font-bold text-2xl">Are you sure to delete?</p>
 
-            <form action="{{route('offer.delete')}}" method="POST">
+            <form action="{{route('offers.delete')}}" method="POST">
                 @csrf
                 <input type="hidden" name="dataid" id="dataid" value="">
                 <div class="flex mt-10 justify-center ">
@@ -69,7 +65,7 @@
                 width: 200,
                 targets: 1
             }],
-            responsive: true
+            
         });
     });
 </script>
