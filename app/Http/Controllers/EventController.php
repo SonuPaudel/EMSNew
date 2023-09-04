@@ -17,7 +17,7 @@ class EventController extends Controller
     }
     public function create()
     {
-        
+
         return view('event.create');
     }
     public function store(Request $request)
@@ -26,7 +26,7 @@ class EventController extends Controller
             'name' => 'required',
             'photopath' => 'required',
             'description' => 'required',
-            
+
         ]);
 
         if ($request->file('photopath')) {
@@ -42,7 +42,7 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = Event::find($id);
-       
+
 
         return view('event.edit', compact('event'));
     }
@@ -53,7 +53,7 @@ class EventController extends Controller
             'name' => 'required',
             'photopath' => 'nullable',
             'description' => 'required',
-            
+
         ]);
         $data['photopath'] = $event->photopath;
 

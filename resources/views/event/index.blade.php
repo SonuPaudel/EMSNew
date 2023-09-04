@@ -15,7 +15,7 @@
         <thead>
             <th>ID</th>
             <th>Event-Name</th>
-            
+
             <th>Description</th>
             <th>Photo</th>
             <th>Action</th>
@@ -26,7 +26,7 @@
             <tr>
                 <td>{{$event->id}}</td>
                 <td>{{$event->name}}</td>
-                
+
                 <td>
                     <div class="h-20 overflow-auto">{{$event->description}}</div>
                 </td>
@@ -62,7 +62,7 @@
     $(document).ready(function() {
         $('#example').DataTable({
             columnDefs: [{
-                    width: 200,
+                    width: 250,
                     targets: 4
                 },
 

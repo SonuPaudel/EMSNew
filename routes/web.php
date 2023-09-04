@@ -52,7 +52,7 @@ Route::prefix('admin/')->middleware('auth')->group(function () {
     Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
     Route::post('/event/store', [EventController::class, 'store'])->name('event.store');
     Route::get('/event/{id}/edit', [EventController::class, 'edit'])->name('event.edit');
-    Route::post('/event/{id}/update', [EventController::class, 'update'])->name('event.update');
+    Route::put('/event/{id}/update', [EventController::class, 'update'])->name('event.update');
     Route::post('/event/delete', [EventController::class, 'delete'])->name('event.delete');
 
     //Gallery
@@ -84,7 +84,7 @@ Route::prefix('admin/')->middleware('auth')->group(function () {
     Route::get('/venue/create', [VenueController::class, 'create'])->name('venue.create');
     Route::post('/venue/store', [VenueController::class, 'store'])->name('venue.store');
     Route::get('/venue/{venue}/edit', [VenueController::class, 'edit'])->name('venue.edit');
-    Route::post('/venue/{venue}/update', [VenueController::class, 'update'])->name('venue.update');
+    Route::put('/venue/{venue}/update', [VenueController::class, 'update'])->name('venue.update');
     Route::post('/venue/delete', [VenueController::class, 'delete'])->name('venue.delete');
 
     //Offer

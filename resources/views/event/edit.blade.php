@@ -2,7 +2,7 @@
 @section('content')
 <h2 class="text-4xl font-bold mt-5 pt-10 text-black">Edit Event</h2>
 <div class="my-10 w-11/12 md:w-9/12 lg:w-8/12 mx-auto border-2 bg-slate-200 rounded-lg">
-    <h2 class="text-xl font-bold text-black p-2 bg-slate-300">Event Details</h2>
+    <h2 class="text-xl font-bold text-black p-2 bg-slate-300">Edit Details</h2>
     <form action="{{ route('event.update', $event->id) }}" method="POST" enctype="multipart/form-data" class="px-6 py-4">
         @csrf
         @method('PUT')

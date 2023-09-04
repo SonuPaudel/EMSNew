@@ -69,23 +69,23 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-   
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Services $services)
     {
-        
+
         $data = $request->validate([
             'name' => 'required',
             'event_id' => 'required',
             'description' => 'required',
             'photopath' => 'nullable|mimes:png,jpg',
             'rate' => 'required',
-            
+
         ]);
-        
+
 
         if ($request->hasFile('photopath')) {
             $file = $request->file('photopath');
@@ -95,11 +95,10 @@ class ServiceController extends Controller
             if ($services->photopath != null) {
                 File::delete(public_path('/images/services/' . $services->photopath));
             }
-            
-            $data['photopath'] = $photopath;
 
+            $data['photopath'] = $photopath;
         }
-        
+
         $services->update($data);
         return redirect(route('services.index'))->with('success', 'Services Update Sucessfully');
     }

@@ -23,7 +23,7 @@ class VenueController extends Controller
      */
     public function create()
     {
-        
+
         return view('venue.create');
     }
 
@@ -72,7 +72,8 @@ class VenueController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Venue $venue){
+    public function update(Request $request, Venue $venue)
+    {
         $data = $request->validate([
             'name' => 'required',
             'description' => 'required',
