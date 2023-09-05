@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="text-4xl font-bold text-center text-black mb-8">Edit Venue</h2>
+<h2 class="text-4xl font-bold mt-5 pt-10 text-black">Edit Venue</h2>
 <div class="my-10 w-11/12 md:w-9/12 lg:w-8/12 mx-auto border-2 bg-slate-200 rounded-lg">
     <h2 class="text-xl font-bold text-black p-2 bg-slate-300">Edit Details</h2>
     <form action="{{ route('venue.update', $venue->id) }}" method="POST" enctype="multipart/form-data" class="px-6 py-4">
@@ -35,7 +35,6 @@
             @enderror
         </div>
         <div class="mb-4">
-            <label for="photopath" class="text-gray-600">Image</label>
             <p>Current Image:</p>
             <img class="w-20 mt-2" src="{{ asset('images/venue/' . $venue->photopath) }}" alt="">
             <input type="file" id="photopath" name="photopath" class="mt-2">

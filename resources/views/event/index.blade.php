@@ -10,23 +10,19 @@
         <a href="{{ route('event.create') }}" class="bg-blue-600 text-white rounded-lg p-2 mr-4 hover:p-2.5 hover:bg-blue-800">Add Event</a>
     </div>
 
-
     <table id="example" class="display">
         <thead>
             <th>ID</th>
             <th>Event-Name</th>
-
             <th>Description</th>
             <th>Photo</th>
             <th>Action</th>
         </thead>
-
         <tbody>
             @foreach($events as $event)
             <tr>
                 <td>{{$event->id}}</td>
                 <td>{{$event->name}}</td>
-
                 <td>
                     <div class="h-20 overflow-auto">{{$event->description}}</div>
                 </td>

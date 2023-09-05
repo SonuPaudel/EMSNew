@@ -6,14 +6,14 @@
     <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data" class="px-6 py-4">
         @csrf
         <div class="mb-4">
-            <label for="name" class="block mt-2 text-gray-700 font-medium">Service Name</label>
+            <label for="name" class=" text-gray-700 ">Service Name</label>
             <input type="text" class="w-full p-2 rounded-lg mt-2" id="name" name="name" placeholder="Enter Name" value="{{ old('name') }}">
             @error('name')
             <span class="text-red-500 mt-1">* {{ $message }}</span>
             @enderror
         </div>
         <div class="mb-4">
-            <label for="event_id" class="block mt-2 text-gray-700 font-medium">Event Types</label>
+            <label for="event_id" class=" text-gray-700 ">Event Types</label>
             <select class="w-full p-2 rounded-lg mt-2" name="event_id" id="event_id">
                 <option value="" selected>--Select--</option>
                 @foreach($events as $event)
@@ -25,21 +25,21 @@
             @enderror
         </div>
         <div class="mb-4">
-            <label for="description" class="block mt-2 text-gray-700 font-medium">Description</label>
+            <label for="description" class=" text-gray-700 ">Description</label>
             <textarea id="mytextarea" class="w-full p-2 rounded-lg mt-2" name="description" placeholder="Description">{{ old('description') }}</textarea>
             @error('description')
             <span class="text-red-500 mt-1">* {{ $message }}</span>
             @enderror
         </div>
         <div class="mb-4">
-            <label for="rate" class="block mt-2 text-gray-700 font-medium">Service Price</label>
+            <label for="rate" class=" text-gray-700 ">Service Price</label>
             <input type="text" class="w-full p-2 rounded-lg mt-2" id="rate" name="rate" placeholder="Price" value="{{ old('rate') }}">
             @error('rate')
             <span class="text-red-500 mt-1">* {{ $message }}</span>
             @enderror
         </div>
         <div class="mb-4">
-            <label for="photopath" class="block mt-2 text-gray-700 font-medium">Image</label>
+            <label for="photopath" class=" text-gray-800 ">Image</label>
             <input type="file" id="photopath" class="mt-2" name="photopath">
             @error('photopath')
             <span class="text-red-500 mt-1">* {{ $message }}</span>

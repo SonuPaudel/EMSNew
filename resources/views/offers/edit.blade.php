@@ -5,7 +5,6 @@
     <h2 class="text-xl font-bold text-black p-2 bg-slate-300">Edit Offer Details</h2>
     <form action="{{ route('offers.update', $offer->id) }}" method="POST" class="px-6 py-4">
         @csrf
-        
         <div class="mb-4">
             <label for="service_id" class="block mt-2 text-gray-700 font-medium">Select Service</label>
             <select class="w-full p-2 rounded-lg mt-2" name="service_id" id="service_id">

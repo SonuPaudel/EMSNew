@@ -29,7 +29,6 @@
                 <td>{{$service->event->name}}</td>
                 <td>{{$service->rate}}</td>
                 <td><img class="w-20" src="{{asset('images/services/'.$service->photopath)}}" alt=""></td>
-
                 <td>
                     <a href="{{ route('services.edit',$service->id)}}" class="bg-blue-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-blue-800">Edit</a>
                     <a onclick="showDelete('{{$service->id}}')" class="bg-red-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-red-800">Delete</a>
@@ -63,13 +62,11 @@
             columnDefs: [{
                     width: 250,
                     targets: 4
-                }, {
-                    width: 200,
-                    targets: 2
-                }
+                },
 
 
             ],
+            responsive: true
 
         });
     });

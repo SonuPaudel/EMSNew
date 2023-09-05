@@ -54,23 +54,30 @@
     </div>
 </div>
 
-<script>
+<<script>
     $(document).ready(function() {
-        $('#example').DataTable({
-            responsive: true
-        });
+    $('#example').DataTable({
+    columnDefs: [{
+    width: 250,
+    targets: 4
+    },
+
+
+    ],
+    responsive: true
     });
-</script>
 
-<script>
-    function showDelete(id) {
-        $('#deletebox').removeClass('hidden');
-        $('#dataid').val(id);
-    }
+    });
+    </script>
+    <script>
+        function showDelete(id) {
+            $('#deletebox').removeClass('hidden');
+            $('#dataid').val(id);
+        }
 
-    function hideDelete() {
-        $('#deletebox').addClass('hidden');
-    }
-</script>
+        function hideDelete() {
+            $('#deletebox').addClass('hidden');
+        }
+    </script>
 
-@endsection
+    @endsection

@@ -1,15 +1,14 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.message')
-<div class="my-8 text-left">
-    <a href="{{ route('offers.create') }}" class="bg-blue-600 text-white rounded-lg p-2 hover:p-2.5 hover:bg-blue-800">Add Offers</a>
-</div>
-<div class="mt-10 border-2 border-slate-300 w-full">
+<h2 class="text-5xl font-bold mt-5  pt-10 text-black">Offer </h2>
+<div class=" mt-10 border-2 border-slate-300 w-full">
     <div class="mb-4 p-3  bg-slate-300 ">
-        <span class="text-black text-xl font-bold">Package List</span>
+        <span class="text-black text-xl font-bold">Offer List</span>
     </div>
-
-
+    <div class="my-4 text-right">
+        <a href="{{ route('offers.create') }}" class="bg-blue-600 text-white rounded-lg p-2 mr-4 hover:p-2.5 hover:bg-blue-800">Add Offer</a>
+    </div>
     <table id="example" class="display">
         <thead>
             <th>ID</th>
@@ -18,7 +17,6 @@
             <th>Discounted Rate</th>
             <th>Action</th>
         </thead>
-
         <tbody>
             @foreach($offers as $offer)
             <tr>
@@ -26,8 +24,6 @@
                 <td>{{$offer->service->name}}</td>
                 <td>{{$offer->service->rate}}</td>
                 <td>{{$offer->discounted_rate}}</td>
-                
-                
                 <td>
                     <a href="{{ route('offers.edit',$offer->id)}}" class="bg-blue-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-blue-800">Edit</a>
                     <a onclick="showDelete('{{$offer->id}}')" class="bg-red-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-red-800">Delete</a>
@@ -59,17 +55,17 @@
     $(document).ready(function() {
         $('#example').DataTable({
             columnDefs: [{
-                width: 250,
-                targets: 4
-            }, {
-                width: 200,
-                targets: 1
-            }],
-            
+                    width: 250,
+                    targets: 4
+                },
+
+
+            ],
+            responsive: true
         });
+
     });
 </script>
-
 <script>
     function showDelete(id) {
         $('#deletebox').removeClass('hidden');
