@@ -36,9 +36,9 @@
         </div>
 
         <div class="mb-4">
-            <label for="email" class="text-gray-800">Role</label>
-            <select class="w-full p-2 rounded-lg mt-2" name="role">
-                <option value="editor">Editor</option>
+            <label for="user_type" class="text-gray-800">Role</label>
+            <select class="w-full p-2 rounded-lg mt-2" name="user_type" id="user_type">
+                <option value="user">User</option>
                 <option value="admin">Admin</option>
             </select>
             @error('role')

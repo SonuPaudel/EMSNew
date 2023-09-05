@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GalleryController;
@@ -23,12 +24,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PagesController::class, 'index'])->name('index');
-Route::get('/userdashboard', [PagesController::class, 'userdashboard'])->name('userdashboard');
 
-Route::get('/userprofile', [PagesController::class, 'userprofile'])->name('userprofile');
-Route::post('/userprofile/{id}/update', [UserController::class, 'updateuserProfile'])->name('updateuserProfile');
-
-Route::get('/userbookings', [PagesController::class, 'userbookings'])->name('userbookings');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/events', [PagesController::class, 'events'])->name('events');
@@ -39,13 +35,28 @@ Route::get('/{id}/eventdetails', [PagesController::class, 'eventdetails'])->name
 Route::get('/{id}/offerdetails', [PagesController::class, 'offerdetails'])->name('offerdetails');
 Route::get('/{id}/servicedetails', [PagesController::class, 'servicedetails'])->name('servicedetails');
 
+Route::post('/bookings/store/{id}',[BookingController::class,'store'])->name('bookings.store');
+
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/booking/success', [PagesController::class, 'success'])->name('bookings.success');
+    Route::get('/userdashboard', [PagesController::class, 'userdashboard'])->name('userdashboard');
+
+Route::get('/userprofile', [PagesController::class, 'userprofile'])->name('userprofile');
+Route::post('/userprofile/{id}/update', [UserController::class, 'updateuserProfile'])->name('updateuserProfile');
+
+Route::get('/userbookings', [PagesController::class, 'userbookings'])->name('userbookings');
+});
 
 
 
 
 
 
-Route::prefix('admin/')->middleware('auth')->group(function () {
+
+Route::prefix('admin/')->middleware(['auth', 'isAdmin'])->group(function () {
+    
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/event', [EventController::class, 'index'])->name('event.index');
@@ -94,6 +105,11 @@ Route::prefix('admin/')->middleware('auth')->group(function () {
     Route::get('/offers/{offer}/edit', [OfferController::class, 'edit'])->name('offers.edit');
     Route::post('/offers/{offer}/update', [OfferController::class, 'update'])->name('offers.update');
     Route::post('/offers/delete', [OfferController::class, 'delete'])->name('offers.delete');
+
+    Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+    
+    Route::post('/bookings/delete', [BookingController::class, 'delete'])->name('bookings.delete');
+
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

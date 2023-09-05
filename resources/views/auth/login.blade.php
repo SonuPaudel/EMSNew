@@ -14,6 +14,9 @@
                     <h1 class="text-2xl font-semibold text-gray-900 text-center">Log In!</h1>
                     <form class="mt-12" action="{{ route('login') }}" method="POST">
                         @csrf
+                        <!-- Add a hidden input field to store the intended URL -->
+                        <input type="hidden" name="intended_url" value="{{ session('url.intended') }}">
+                        
                         <div class="relative">
                             <input id="email" name="email" type="text" class="px-0 peer h-10 w-full border-0 border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:ring-0 focus:border-blue-600" placeholder="Email" />
                             <label for="email" class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email address</label>

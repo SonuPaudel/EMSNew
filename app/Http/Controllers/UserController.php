@@ -32,29 +32,25 @@ class UserController extends Controller
     }
 
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'user_type' => 'required',
 
 
         ]);
-
-        $user = User::create([
+        $user= User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'user_type' => $request->user_type,
             'password' => Hash::make($request->password),
 
         ]);
+        return redirect()->route('user.index')->with('success', 'User created successfully.');
 
-        event(new Registered($user));
-
-
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
     }
     /**
      * Display the specified resource.
@@ -69,7 +65,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -77,14 +74,38 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+
+            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+            'password' => 'nullable|min:8|confirmed',
+            'user_type' => 'required',
+        ]);
+
+        $data = [
+            'name' => $request->input('name'),
+
+            'email' => $request->input('email'),
+            'user_type' => $request->input('user_type'),
+        ];
+
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->input('password'));
+        }
+
+        $user->update($data);
+
+        return redirect()->route('user.index')->with('success', 'User updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(User $user)
+    public function delete(Request $request)
     {
-        //
+        $user=User::find($request->dataid);
+        $user->delete();
+        return redirect()->route('user.index')->with('success', 'User deleted successfully.');
     }
     public function updateuserProfile(Request $request)
     {

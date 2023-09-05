@@ -45,8 +45,8 @@
                     <span class="text">Dashboard</span>
                 </a>
             </li>
-            <li @if(request()->routeIs('')) class="active" @endif>
-                <a href="#">
+            <li @if(request()->routeIs('bookings.*')) class="active" @endif>
+                <a href="{{route('bookings.index')}}">
                     <i class='bx bx-bookmark-heart'></i>
                     <span class="text">Booking</span>
                 </a>

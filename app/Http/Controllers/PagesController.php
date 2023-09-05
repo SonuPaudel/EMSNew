@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+
 use App\Models\Event;
 use App\Models\Gallery;
 use App\Models\Offer;
@@ -10,6 +12,8 @@ use App\Models\Services;
 use App\Models\Venue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 class PagesController extends Controller
 {
@@ -83,4 +87,9 @@ class PagesController extends Controller
         
         return view('servicedetails', compact('service', 'offers'));
     }
+    public function success(){
+        return view('bookingsuccess'); 
+    }
+
+
 }

@@ -36,10 +36,11 @@
 				<!-- Secondary Navbar items -->
 				@if(Auth::check())
 				<div class="hidden md:flex items-center space-x-3">
-				<a href="{{ Auth::user()->isAdmin() ? route('admin/dashboard') : route('userdashboard') }}" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Dashboard</a>
+				<a href="{{ Auth::user()->user_type === 'admin' ? route('dashboard') : route('userdashboard') }}" target="_blank" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Dashboard</a>
+
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
-						<button type="submit" class="py-2 px-2 mt-4 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Logout</button>
+						<button type="submit" class="py-2 px-2 mt-4 font-medium text-white bg-red-500 rounded hover:bg-green-400 transition duration-300">Logout</button>
 					</form>
 				</div>
 				@else
@@ -70,17 +71,19 @@
 				<li @if(request()->routeIs('about')) class="active font-semibold bg-green-500 text-white" @endif><a href="{{route('about')}}" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About Us</a></li>
 				<li @if(request()->routeIs('contact')) class="active font-semibold bg-green-500 text-white" @endif><a href="{{route('contact')}}" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</a></li>
 				@if(Auth::check())
-        <li><a href="{{ Auth::user()->isAdmin() ? route('admin/dashboard') : route('userdashboard') }}" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Dashboard</a></li>
-        <li>
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Logout</button>
-            </form>
-        </li>
-        @else
-        <li><a href="{{route('login')}}" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Log In</a></li>
-        <li><a href="{{route('register')}}" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Sign Up</a></li>
-        @endif
+    <li><a href="{{ auth()->user()->user_type == 'admin' ? route('dashboard') : route('userdashboard') }}" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Dashboard</a></li>
+    
+	<li>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Logout</button>
+        </form>
+    </li>
+@else
+    <li><a href="{{ route('login') }}" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Log In</a></li>
+    <li><a href="{{ route('register') }}" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Sign Up</a></li>
+@endif
+
 
 			</ul>
 		</div>
