@@ -13,8 +13,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        
-        return view('bookings.index');
+        $bookings = Bookings::all();
+        return view('bookings.index', compact('bookings'));
     }
 
     /**
@@ -63,7 +63,8 @@ class BookingController extends Controller
      */
     public function edit(Bookings $booking)
     {
-        //
+        $booking = Bookings::find($booking->id);
+        return view('bookings.edit', compact('booking'));
     }
 
     /**
@@ -71,7 +72,15 @@ class BookingController extends Controller
      */
     public function update(Request $request, Bookings $booking)
     {
-        //
+        $request->validate([
+            'booking_status' => 'required|in:pending,confirmed,canceled',
+        ]);
+
+        $booking->update([
+            'booking_status' => $request->input('booking_status'),
+        ]);
+
+        return redirect()->route('bookings.index')->with('success', 'Booking status updated successfully.');
     }
 
     /**
@@ -81,5 +90,10 @@ class BookingController extends Controller
     {
         //
     }
-    
+    public function delete(){
+        $dataid = request('dataid');
+        $booking = Bookings::find($dataid);
+        $booking->delete();
+        return redirect()->route('bookings.index')->with('success', 'Booking deleted successfully.');
+    }
 }

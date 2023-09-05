@@ -7,10 +7,25 @@
     <p class="text-green-500 mt-4 text-center justify-center">{{ session('success') }}</p>
     @endif
 
-    <form action="{{ route('updateuserProfile', auth()->user()->id) }}" method="POST" class="max-w-md mx-auto p-6">
+    <form action="{{ route('updateuserProfile', auth()->user()->id) }}" method="POST" enctype="multipart/form-data" class="max-w-md mx-auto p-6">
         @csrf
 
+        <div class="mb-4 flex justify-center items-center">
+    
+    <div class="mt-2">
+        <img src="{{ asset('images/users/' . Auth::user()->photopath) }}" alt="Current Image" class="w-32 h-32 rounded-full">
+    </div>
+</div>
+
+
         <div class="mb-4">
+            <!-- Upload New Image -->
+            <label for="photopath" class="block text-sm font-medium text-gray-700">Upload New Image</label>
+            <input type="file" id="photopath" name="photopath" class="mt-1 p-2 border rounded w-full focus:outline-none focus:border-blue-500">
+        </div>
+
+        <div class="mb-4">
+            <!-- Name -->
             <label for="name" class="block text-sm font-medium text-gray-700">Name <span class="text-red-500">*</span></label>
             <input type="text" id="name" name="name" value="{{ old('name', Auth::user()->name) }}" class="mt-1 p-2 border rounded w-full focus:outline-none focus:border-blue-500">
             @error('name')
@@ -19,6 +34,7 @@
         </div>
 
         <div class="mb-4">
+            <!-- Email -->
             <label for="email" class="block text-sm font-medium text-gray-700">Email <span class="text-red-500">*</span></label>
             <input type="email" id="email" name="email" value="{{ old('email', Auth::user()->email) }}" class="mt-1 p-2 border rounded w-full focus:outline-none focus:border-blue-500">
             @error('email')
@@ -27,6 +43,7 @@
         </div>
 
         <div class="mb-4">
+            <!-- Password -->
             <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
             <input type="password" id="password" name="password" class="mt-1 p-2 border rounded w-full focus:outline-none focus:border-blue-500">
             @error('password')
@@ -35,6 +52,7 @@
         </div>
 
         <div class="mb-6">
+            <!-- Confirm Password -->
             <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
             <input type="password" id="password_confirmation" name="password_confirmation" class="mt-1 p-2 border rounded w-full focus:outline-none focus:border-blue-500">
             @error('password')
@@ -46,8 +64,5 @@
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Update Profile</button>
         </div>
     </form>
-
-    
-
 </div>
 @endsection

@@ -39,45 +39,45 @@
             <span class="text">EMS</span>
         </a>
         <ul class="side-menu top">
-            <li @if(request()->routeIs('dashboard.*')) class="active" @endif>
+            <li @if(request()->routeIs('dashboard')) class="active" @endif>
                 <a href="{{route('dashboard')}}">
-                    <i class='bx bxs-dashboard'></i>
+                    <i class='bx bx-sm bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
             <li @if(request()->routeIs('bookings.*')) class="active" @endif>
                 <a href="{{route('bookings.index')}}">
-                    <i class='bx bx-bookmark-heart'></i>
+                    <i class='bx bx-sm bx-bookmark-heart'></i>
                     <span class="text">Booking</span>
                 </a>
             </li>
             <li @if(request()->routeIs('event.*')) class="active" @endif>
                 <a href="{{route('event.index')}}">
-                    <i class='bx bx-calendar-event'></i>
+                    <i class='bx bx-sm bx-calendar-event'></i>
                     <span class="text">Events</span>
                 </a>
             </li>
             <li @if(request()->routeIs('services.*')) class="active" @endif>
                 <a href="{{route('services.index')}}">
-                    <i class='bx bxs-briefcase'></i>
+                    <i class='bx bx-sm bxs-briefcase'></i>
                     <span class="text">Services</span>
                 </a>
             </li>
             <li @if(request()->routeIs('venue.*')) class="active" @endif>
                 <a href="{{route('venue.index')}}">
-                    <i class='bx bx-current-location'></i>
+                    <i class='bx bx-sm bx-current-location'></i>
                     <span class="text">Venue</span>
                 </a>
             </li>
             <li @if(request()->routeIs('offers.*')) class="active" @endif>
                 <a href="{{route('offers.index')}}">
-                    <i class='bx bx-package'></i>
+                    <i class='bx bx-sm bx-package'></i>
                     <span class="text">Offers</span>
                 </a>
             </li>
             <li @if(request()->routeIs('gallery.*')) class="active" @endif>
                 <a href="{{route('gallery.index')}}">
-                    <i class='bx bx-images'></i>
+                    <i class='bx bx-sm bx-images'></i>
                     <span class="text">Gallery</span>
                 </a>
             </li>
@@ -85,7 +85,7 @@
 
             <li>
                 <a href="{{route('user.index')}}">
-                    <i class='bx bxs-group'></i>
+                    <i class='bx bx-sm bxs-group'></i>
                     <span class="text">Users</span>
                 </a>
             </li>
@@ -94,14 +94,14 @@
         <ul class="side-menu">
             <li>
                 <a href="#">
-                    <i class='bx bxs-cog'></i>
+                    <i class='bx bx-sm bxs-cog'></i>
                     <span class="text">Settings</span>
                 </a>
             </li>
             <li>
                 <form action="{{route('logout')}}" method="post" class="ml-3">
                     @csrf
-                    <i class='bx bxs-log-out-circle'></i>
+                    <i class='bx bx-sm bxs-log-out-circle'></i>
                     <button type="submit">Logout</button>
                     </a>
                 </form>
@@ -116,7 +116,7 @@
     <section id="content">
         <!-- NAVBAR -->
         <nav>
-            <i class='bx bx-menu'></i>
+            <i class='bx bx-md bx-menu'></i>
 
         </nav>
         <!-- NAVBAR -->

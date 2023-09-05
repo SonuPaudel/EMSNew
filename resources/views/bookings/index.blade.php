@@ -6,29 +6,30 @@
     <div class="mb-4 p-3  bg-slate-300 ">
         <span class="text-black text-xl font-bold">Bookings List</span>
     </div>
-    <div class="my-4 text-right">
-        <a href="" class="bg-blue-600 text-white rounded-lg p-2 mr-4 hover:p-2.5 hover:bg-blue-800">Add Bookings</a>
-    </div>
+    
     <table id="example" class="display">
         <thead>
             <th>Booking ID</th>
-            <th>User-Name</th>
-            <th>Servive Name</th>
-            <th>Rate</th>
+            <th>Customer-Name</th>
+            <th>Service Name</th>
+            <th>Bookings Date</th>
+            <th>Status</th>
             <th>Action</th>
         </thead>
         <tbody>
-            
+            @foreach($bookings as $booking)
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{$booking->id}}</td>
+                <td>{{$booking->user->name}}</td>
+                <td>{{$booking->service->name}}</td>
+                <td>{{$booking->booking_date}}</td>
+                <td>{{$booking->booking_status}}</td>
                 <td>
-                    <a href="" class="bg-blue-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-blue-800">Edit</a>
-                    <a onclick="showDelete('')" class="bg-red-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-red-800">Delete</a>
+                    <a href="{{route('bookings.edit',$booking->id)}}" class="bg-blue-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-blue-800">View</a>
+                    <a onclick="showDelete('{{$booking->id}}')" class="bg-red-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-red-800">Delete</a>
                 </td>
             </tr>
+            @endforeach
             
         </tbody>
     </table>
@@ -38,7 +39,7 @@
         <div class="bg-white p-10 ">
             <p class="font-bold text-2xl">Are you sure to delete?</p>
 
-            <form action="" method="POST">
+            <form action="{{route('bookings.delete')}}" method="POST">
                 @csrf
                 <input type="hidden" name="dataid" id="dataid" value="">
                 <div class="flex mt-10 justify-center ">

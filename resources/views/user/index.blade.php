@@ -15,6 +15,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
+            <th>Image</th>
             <th>Action</th>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->user_type}}</td>
+                <td><img class="w-20 rounded-full" src="{{asset('images/users/'.$user->photopath)}}" alt=""></td>
                 <td>
                     <a href="{{route('user.edit',$user->id)}}" class="bg-blue-600 text-white px-4 py-1 rounded-lg mx-1">Edit</a>
                     <a onclick="showDelete('{{$user->id}}')" class="bg-red-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer">Delete</a>

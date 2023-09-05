@@ -14,17 +14,14 @@
                 </li>
             </ul>
         </div>
-        <a href="#" class="btn-download">
-            <i class='bx bxs-cloud-download'></i>
-            <span class="text">Download PDF</span>
-        </a>
+        
     </div>
 
     <ul class="box-info">
         <li>
             <i class='bx bxs-calendar-check'></i>
             <span class="text">
-                <h3>Event</h3>
+                <h3>Events</h3>
                 <p>{{$totalevent}}</p>
             </span>
         </li>
@@ -38,8 +35,8 @@
         <li>
             <i class='bx bxs-dollar-circle'></i>
             <span class="text">
-                <h3>Package</h3>
-                <p></p>
+                <h3>Bookings</h3>
+                <p>{{$totalbookings}}</p>
             </span>
         </li>
     </ul>
@@ -48,7 +45,7 @@
     <div class="table-data">
         <div class="order">
             <div class="head">
-                <h3>Recent Orders</h3>
+                <h3>Recent Bookings</h3>
                 <i class='bx bx-search'></i>
                 <i class='bx bx-filter'></i>
             </div>
@@ -56,51 +53,29 @@
                 <thead>
                     <tr>
                         <th>User</th>
-                        <th>Date Order</th>
+                        <th>Service</th>
+
+                        <th>Booking Date</th>
                         <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($bookings as $booking)
                     <tr>
                         <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
+                        <img src="{{ asset('images/users/' . $booking->user->photopath) }}" alt="{{ $booking->user->name }}'s Image">
+                            <p>{{$booking->user->name}}</p>
                         </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status completed">Completed</span></td>
-                    </tr>
-                    <tr>
+                        <td>{{$booking->service->name}}</td>
+                        <td>{{$booking->booking_date}}</td>
+                        <td><span class="status {{strtolower($booking->booking_status)}}">{{$booking->booking_status}}</span></td>
                         <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
+                            <a href="{{route('bookings.edit',$booking->id)}}" class="bg-blue-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-blue-800">View</a>
+                            
                         </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status pending">Pending</span></td>
                     </tr>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status process">Process</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status pending">Pending</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="img/people.png">
-                            <p>John Doe</p>
-                        </td>
-                        <td>01-10-2021</td>
-                        <td><span class="status completed">Completed</span></td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

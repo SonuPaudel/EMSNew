@@ -39,6 +39,7 @@ Route::post('/bookings/store/{id}',[BookingController::class,'store'])->name('bo
 
 
 
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/booking/success', [PagesController::class, 'success'])->name('bookings.success');
     Route::get('/userdashboard', [PagesController::class, 'userdashboard'])->name('userdashboard');
@@ -87,7 +88,7 @@ Route::prefix('admin/')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
     Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
     Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
-    Route::post('/user/{user}/update', [UserController::class, 'update'])->name('user.update');
+    Route::put('/user/{user}/update', [UserController::class, 'update'])->name('user.update');
     Route::post('/user/delete', [UserController::class, 'delete'])->name('user.delete');
 
     //Venue
@@ -107,6 +108,10 @@ Route::prefix('admin/')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::post('/offers/delete', [OfferController::class, 'delete'])->name('offers.delete');
 
     Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+    
+    Route::get('/bookings/{booking}/edit', [BookingController::class, 'edit'])->name('bookings.edit');
+    Route::put('/bookings/{booking}/update', [BookingController::class, 'update'])->name('bookings.update');
+
     
     Route::post('/bookings/delete', [BookingController::class, 'delete'])->name('bookings.delete');
 

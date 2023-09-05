@@ -71,7 +71,7 @@
 				<li @if(request()->routeIs('about')) class="active font-semibold bg-green-500 text-white" @endif><a href="{{route('about')}}" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About Us</a></li>
 				<li @if(request()->routeIs('contact')) class="active font-semibold bg-green-500 text-white" @endif><a href="{{route('contact')}}" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</a></li>
 				@if(Auth::check())
-    <li><a href="{{ auth()->user()->user_type == 'admin' ? route('dashboard') : route('userdashboard') }}" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Dashboard</a></li>
+    <li ><a href="{{ auth()->user()->user_type == 'admin' ? route('dashboard') : route('userdashboard') }}" class="block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Dashboard</a></li>
     
 	<li>
         <form action="{{ route('logout') }}" method="POST">

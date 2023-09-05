@@ -5,7 +5,7 @@
     <h2 class="text-xl font-bold text-black p-2 bg-slate-300">Edit User Information</h2>
     <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data" class="px-6 py-4">
         @csrf
-        
+        @method('PUT')
 
         <div class="mb-4">
             <label for="name" class="text-gray-800">User Name</label>
@@ -43,6 +43,13 @@
             @error('user_type')
             <span class="text-red-500 mt-1">* {{ $message }}</span>
             @enderror
+        </div>
+
+        <div class="mb-4">
+        <p>Current Images</p>
+            <img class="w-20 mt-2" src="{{ asset('images/users/' . $user->photopath) }}" alt="">
+            <label for="photopath" class="text-gray-800">Profile Photo</label>
+            <input type="file" class="w-full mt-2" name="photopath" id="photopath">
         </div>
 
         <div class="mt-10 text-center">

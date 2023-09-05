@@ -5,86 +5,63 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $users = User::all();
         return view('user.index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('user.create');
     }
 
-
     public function store(Request $request)
     {
-        $request->validate([
+        $data=$request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'user_type' => 'required',
-
-
+            'photopath' => 'nullable|image|mimes:jpeg,png,jpg,gif|',
         ]);
-        $user= User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'user_type' => $request->user_type,
-            'password' => Hash::make($request->password),
 
-        ]);
+        if ($request->file('photopath')) {
+            $file = $request->file('photopath');
+            $filename = $file->getClientOriginalName();
+            $photopath = time() . '_' . $filename;
+            $file->move(public_path('/images/users/'), $photopath);
+            $data['photopath'] = $photopath;
+        }
+
+        User::create($data);
+
         return redirect()->route('user.index')->with('success', 'User created successfully.');
-
-    }
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(User $user)
     {
-
         return view('user.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, User $user)
     {
         $request->validate([
             'name' => 'required|string|max:255',
-
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
             'password' => 'nullable|min:8|confirmed',
             'user_type' => 'required',
+            'photopath' => 'nullable|image|mimes:jpeg,png,jpg,gif|',
         ]);
 
-        $data = [
+       $data = [
             'name' => $request->input('name'),
-
             'email' => $request->input('email'),
             'user_type' => $request->input('user_type'),
         ];
@@ -93,20 +70,31 @@ class UserController extends Controller
             $data['password'] = Hash::make($request->input('password'));
         }
 
+        if ($request->hasFile('photopath')) {
+            $file = $request->file('photopath');
+            $filename = $file->getClientOriginalName();
+            $photopath = time() . '_' . $filename;
+            $file->move(public_path('/images/users/'), $photopath);
+            if ($user->photopath != null) {
+                File::delete(public_path('/images/users/' . $user->photopath));
+            }
+
+            $data['photopath'] = $photopath;
+        }
         $user->update($data);
 
         return redirect()->route('user.index')->with('success', 'User updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function delete(Request $request)
     {
-        $user=User::find($request->dataid);
-        $user->delete();
-        return redirect()->route('user.index')->with('success', 'User deleted successfully.');
+        $user = User::find($request->dataid);
+        File::delete(public_path('/images/users/' . $user->photopath));
+            $user->delete();
+            return redirect()->route('user.index')->with('success', 'User deleted successfully.');
+        
     }
+
     public function updateuserProfile(Request $request)
     {
         $user = Auth::user();
@@ -115,6 +103,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
             'password' => 'nullable|min:8|confirmed',
+            'photopath' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $data = [
@@ -124,6 +113,18 @@ class UserController extends Controller
 
         if ($request->filled('password')) {
             $data['password'] = Hash::make($request->input('password'));
+        }
+
+        if ($request->hasFile('photopath')) {
+            $file = $request->file('photopath');
+            $filename = $file->getClientOriginalName();
+            $photopath = time() . '_' . $filename;
+            $file->move(public_path('/images/users/'), $photopath);
+            // Delete the old photo if it exists
+            if ($user->photopath) {
+                File::delete(public_path('/images/services/' . $user->photopath));
+            }
+            $data['photopath'] = $photopath;
         }
 
         $user->update($data);

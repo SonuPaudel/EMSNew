@@ -15,14 +15,15 @@ class Bookings extends Model
         return $this->belongsTo(Event::class);
     }
     public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+{
+    return $this->belongsTo(User::class);
+}
+
     
-    public function service()
-    {
-        return $this->belongsTo(Service::class);
-    }
+public function service(){
+    return $this->belongsTo(Services::class);
+}
+
     public function offer()
     {
         return $this->belongsTo(Offer::class);

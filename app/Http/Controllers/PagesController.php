@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
-
+use App\Models\Bookings;
 use App\Models\Event;
 use App\Models\Gallery;
 use App\Models\Offer;
@@ -40,9 +39,16 @@ class PagesController extends Controller
         return view('userprofile');
     }
     public function userbookings()
-    {
-        return view('userbookings');
-    }
+{
+    // Load the service relationship for the authenticated user's bookings
+    $bookings = Auth::user()->bookings->load('service');
+
+    // Retrieve all services (if needed)
+    $services = Services::all();
+
+    return view('userbookings', compact('bookings', 'services'));
+}
+
     
     public function about()
     {
@@ -90,6 +96,6 @@ class PagesController extends Controller
     public function success(){
         return view('bookingsuccess'); 
     }
-
+    
 
 }

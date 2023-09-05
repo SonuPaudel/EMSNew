@@ -576,6 +576,7 @@ table.dataTable td {
 .dataTables_wrapper {
   position: relative;
   clear: both;
+  padding: 15px;
 }
 
 .dataTables_wrapper .dataTables_length {

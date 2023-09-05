@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bookings;
 use App\Models\Event;
 
 use App\Models\Services;
@@ -17,8 +18,10 @@ class DashboardController extends Controller
         $totalservices = Services::count();
         $totalvenue = Venue::count();
         $totaluser = User::count();
+        $totalbookings = Bookings::count();
+        $bookings=Bookings::orderBy('booking_date', 'desc')->take(5)->get();
         
 
-        return view('dashboard', compact('totalevent', 'totalservices', 'totalvenue', 'totaluser',));
+        return view('dashboard', compact('totalevent', 'totalservices', 'totalvenue', 'totaluser','bookings','totalbookings'));
     }
 }
