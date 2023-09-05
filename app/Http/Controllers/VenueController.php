@@ -100,6 +100,7 @@ class VenueController extends Controller
     public function delete(Request $request)
     {
         $venue = Venue::find($request->dataid);
+        File::delete(public_path('/images/venue/' . $venue->photopath));
         $venue->delete();
         return redirect(route('venue.index'))->with('success', 'Venue Deleted Successfully');
     }

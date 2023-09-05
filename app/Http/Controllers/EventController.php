@@ -72,6 +72,7 @@ class EventController extends Controller
     public function delete(Request $request)
     {
         $event = Event::find($request->dataid);
+        File::delete(public_path('/images/event/' . $event->photopath));
         $event->delete();
         return redirect(route('event.index'))->with('success', 'Event Deleted Successfully');
     }

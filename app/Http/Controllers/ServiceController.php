@@ -109,7 +109,9 @@ class ServiceController extends Controller
     public function delete(Request $request)
     {
         $services = Services::find($request->dataid);
+        File::delete(public_path('/images/services/' . $services->photopath));
         $services->delete();
+        
         return redirect(route('services.index'))->with('success', 'Services Deleted Successfully');
     }
 }
