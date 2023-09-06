@@ -21,9 +21,6 @@
             <div class="font-bold text-xl mb-2">Name:
                 <span class="text-xl">{{$service->name}}</span>
             </div>
-            <div class="text-xl mb-2">Type:
-                <span class="text-xl">{{$service->type}}</span>
-            </div>
         </div>
         <div class="px-6 pt-4 pb-2">
             <a href="{{route('servicedetails',$service->id)}}" class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300 text-center">

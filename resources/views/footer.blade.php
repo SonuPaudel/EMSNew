@@ -14,7 +14,8 @@
           EMS
         </h6>
         <p>
-          We work and paln all kind of events for small, medium, large organizationand companies.
+          We are the expert event planner for your.
+          We work and plan all kind of events for small, medium, large organizationand companies.
           Our event offer the best and affordable customized package.
           We plan your event as your demand.
           We plan and execute Weding, Birthday, Anniversary, Formal Program events and many more services in NEPAL.
@@ -27,16 +28,13 @@
           Useful links
         </h6>
         <p class="mb-4">
-          <a href="#!" class="text-neutral-600">Pricing</a>
+          <a href="/events" class="text-neutral-600">Pricing</a>
         </p>
         <p class="mb-4">
-          <a href="#!" class="text-neutral-600">Settings</a>
-        </p>
-        <p class="mb-4">
-          <a href="#!" class="text-neutral-600">Orders</a>
+          <a href="/services" class="text-neutral-600">Orders</a>
         </p>
         <p>
-          <a href="#!" class="text-neutral-600">Help</a>
+          <a href="/contact" class="text-neutral-600">Help</a>
         </p>
       </div>
       <!-- Contact section -->

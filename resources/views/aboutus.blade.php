@@ -15,10 +15,11 @@
     <div class="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-10">
         <img class="w-full h-96 object-cover" src="{{asset('images/logo.png')}}" alt="Card Image">
     </div>
-    <div class="px-16 py-12">
+    <div class="px-16">
         <div class=" lg:text-xl font-semibold text-center">About Us</div>
         <div class=" font-normal sm:text-l text-left sm:text-l">
-            We work and paln all kind of events for small, medium, large organizationand companies.
+            We are the expert event planner for your.
+            We work and plan all kind of events for small, medium, large organizationand companies.
             Our event offer the best and affordable customized package.
             We plan your event as your demand.
             We plan and execute Weding, Birthday, Anniversary, Formal Program events and many more services in NEPAL.

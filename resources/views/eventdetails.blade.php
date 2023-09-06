@@ -12,13 +12,6 @@
                 <span class="font-bold text-xl ">{{$eventdetail->name}}</span>
             </div>
 
-            <div class=" text-xl mb-2">Rate:
-                <span class=" text-xl ">{{$eventdetail->rate}}</span>
-            </div>
-            <div class="text-xl mb-2">Capacity:
-                <span class=" text-xl ">{{$eventdetail->capacity}}</span>
-            </div>
-
             <div class="text-xl mb-2">Details:
                 <span class=" text-xl ">{{$eventdetail->description}}</span>
             </div>

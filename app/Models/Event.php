@@ -12,13 +12,9 @@ class Event extends Model
     public function services()
     {
         return $this->hasMany(Services::class);
-        
     }
     public function bookings()
     {
         return $this->hasMany(Booking::class);
     }
-    
-    
-
 }
