@@ -14,9 +14,10 @@
           EMS
         </h6>
         <p>
-          Here you can use rows and columns to organize your footer
-          content. Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit.
+          We work and paln all kind of events for small, medium, large organizationand companies.
+          Our event offer the best and affordable customized package.
+          We plan your event as your demand.
+          We plan and execute Weding, Birthday, Anniversary, Formal Program events and many more services in NEPAL.
         </p>
       </div>
 
