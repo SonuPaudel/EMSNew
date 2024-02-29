@@ -35,7 +35,7 @@ Route::get('/{id}/eventdetails', [PagesController::class, 'eventdetails'])->name
 Route::get('/{id}/offerdetails', [PagesController::class, 'offerdetails'])->name('offerdetails');
 Route::get('/{id}/servicedetails', [PagesController::class, 'servicedetails'])->name('servicedetails');
 
-Route::post('/bookings/store/{id}',[BookingController::class,'store'])->name('bookings.store');
+Route::post('/bookings/store/{id}', [BookingController::class, 'store'])->name('bookings.store');
 
 
 
@@ -44,10 +44,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/booking/success', [PagesController::class, 'success'])->name('bookings.success');
     Route::get('/userdashboard', [PagesController::class, 'userdashboard'])->name('userdashboard');
 
-Route::get('/userprofile', [PagesController::class, 'userprofile'])->name('userprofile');
-Route::post('/userprofile/{id}/update', [UserController::class, 'updateuserProfile'])->name('updateuserProfile');
+    Route::get('/userprofile', [PagesController::class, 'userprofile'])->name('userprofile');
+    Route::post('/userprofile/{id}/update', [UserController::class, 'updateuserProfile'])->name('updateuserProfile');
 
-Route::get('/userbookings', [PagesController::class, 'userbookings'])->name('userbookings');
+    Route::get('/userbookings', [PagesController::class, 'userbookings'])->name('userbookings');
 });
 
 
@@ -57,7 +57,7 @@ Route::get('/userbookings', [PagesController::class, 'userbookings'])->name('use
 
 
 Route::prefix('admin/')->middleware(['auth', 'isAdmin'])->group(function () {
-    
+
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/event', [EventController::class, 'index'])->name('event.index');
@@ -107,12 +107,13 @@ Route::prefix('admin/')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::post('/offers/{offer}/update', [OfferController::class, 'update'])->name('offers.update');
     Route::post('/offers/delete', [OfferController::class, 'delete'])->name('offers.delete');
 
+    //Booking
     Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
-    
+
     Route::get('/bookings/{booking}/edit', [BookingController::class, 'edit'])->name('bookings.edit');
     Route::put('/bookings/{booking}/update', [BookingController::class, 'update'])->name('bookings.update');
 
-    
+
     Route::post('/bookings/delete', [BookingController::class, 'delete'])->name('bookings.delete');
 
 

@@ -14,7 +14,7 @@
                 </li>
             </ul>
         </div>
-        
+
     </div>
 
     <ul class="box-info">
@@ -46,15 +46,14 @@
         <div class="order">
             <div class="head">
                 <h3>Recent Bookings</h3>
-                <i class='bx bx-search'></i>
-                <i class='bx bx-filter'></i>
+                <!-- <i class='bx bx-search'></i>
+                <i class='bx bx-filter'></i> -->
             </div>
             <table>
                 <thead>
                     <tr>
                         <th>User</th>
                         <th>Service</th>
-
                         <th>Booking Date</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -64,7 +63,7 @@
                     @foreach($bookings as $booking)
                     <tr>
                         <td>
-                        <img src="{{ asset('images/users/' . $booking->user->photopath) }}" alt="{{ $booking->user->name }}'s Image">
+                            <img src="{{ asset('images/users/' . $booking->user->photopath) }}" alt="{{ $booking->user->name }}'s Image">
                             <p>{{$booking->user->name}}</p>
                         </td>
                         <td>{{$booking->service->name}}</td>
@@ -72,14 +71,14 @@
                         <td><span class="status {{strtolower($booking->booking_status)}}">{{$booking->booking_status}}</span></td>
                         <td>
                             <a href="{{route('bookings.edit',$booking->id)}}" class="bg-blue-600 text-white px-4 py-1 rounded-lg mx-1 cursor-pointer hover:bg-blue-800">View</a>
-                            
+
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        <div class="todo">
+        <!-- <div class="todo">
             <div class="head">
                 <h3>Todos</h3>
                 <i class='bx bx-plus'></i>
@@ -107,7 +106,7 @@
                     <i class='bx bx-dots-vertical-rounded'></i>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </main>
 @endsection

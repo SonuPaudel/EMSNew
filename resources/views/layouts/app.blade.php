@@ -33,9 +33,9 @@
 
     <!-- SIDEBAR -->
     <section id="sidebar">
-        
+
         <a href="#" class="brand">
-        <i class='bx bx-sm bxs-smile'></i>
+            <i class='bx bx-sm bxs-smile'></i>
             <span class="text">EMS</span>
         </a>
         <ul class="side-menu top">
@@ -81,7 +81,7 @@
                     <span class="text">Gallery</span>
                 </a>
             </li>
-            
+
 
             <li>
                 <a href="{{route('user.index')}}">
@@ -92,12 +92,12 @@
 
         </ul>
         <ul class="side-menu">
-            <li>
+            <!-- <li>
                 <a href="#">
                     <i class='bx bx-sm bxs-cog'></i>
                     <span class="text">Settings</span>
                 </a>
-            </li>
+            </li> -->
             <li>
                 <form action="{{route('logout')}}" method="post" class="ml-3">
                     @csrf

@@ -11,11 +11,11 @@
         @csrf
 
         <div class="mb-4 flex justify-center items-center">
-    
-    <div class="mt-2">
-        <img src="{{ asset('images/users/' . Auth::user()->photopath) }}" alt="Current Image" class="w-32 h-32 rounded-full">
-    </div>
-</div>
+
+            <div class="mt-2">
+                <img src="{{ asset('images/users/' . Auth::user()->photopath) }}" alt="Current Image" class="w-32 h-32 rounded-full">
+            </div>
+        </div>
 
 
         <div class="mb-4">
@@ -65,4 +65,5 @@
         </div>
     </form>
 </div>
+
 @endsection
